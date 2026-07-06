@@ -82,32 +82,32 @@ The project is done when ALL of the following are true:
 
 ## 4. Data Model & Dictionary
 
-Nine linked tables, ~1.4M rows total, covering **2024-07-01 → 2026-06-30** (24 months — enough for cohort and seasonality analysis). Dates use `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`.
+Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules in §4.1 so all benchmark rates hold simultaneously), covering **2024-07-01 → 2026-06-30** (24 months — enough for cohort and seasonality analysis). Dates use `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`.
 
 | # | Table | Grain | ~Rows | Key columns |
 |---|-------|-------|------:|-------------|
-| 1 | `customers` | 1 row / customer | 10,000 | customer_id (PK), signup_date, acquisition_channel, country, city, birth_year, gender, email, marketing_opt_in |
+| 1 | `customers` | 1 row / customer | 12,000 | customer_id (PK), signup_date, acquisition_channel, country, city, birth_year, gender, email, marketing_opt_in |
 | 2 | `products` | 1 row / SKU | 500 | product_id (PK), product_name, category (8 categories), subcategory, unit_price, unit_cost, launch_date |
-| 3 | `orders` | 1 row / order | 60,000 | order_id (PK), customer_id (FK), order_ts, order_status (completed/cancelled/returned), payment_method, shipping_country, discount_amount, shipping_fee |
-| 4 | `order_items` | 1 row / product-in-order | 150,000 | order_item_id (PK), order_id (FK), product_id (FK), quantity, unit_price_at_sale, line_discount |
-| 5 | `web_sessions` | 1 row / session | 250,000 | session_id (PK), customer_id (FK, nullable = anonymous), session_start_ts, device_type, traffic_source, landing_page, campaign_id (nullable) |
-| 6 | `web_events` | 1 row / funnel step | ~900,000 | event_id (PK), session_id (FK), event_type (page_view → product_view → add_to_cart → begin_checkout → purchase), event_ts, product_id (nullable), order_id (nullable, purchase only) |
+| 3 | `orders` | 1 row / order | ~20,000 | order_id (PK), customer_id (FK), order_ts, order_status (completed/cancelled/returned), payment_method, shipping_country, discount_amount, shipping_fee |
+| 4 | `order_items` | 1 row / product-in-order | ~32,000 | order_item_id (PK), order_id (FK), product_id (FK), quantity, unit_price_at_sale, line_discount |
+| 5 | `web_sessions` | 1 row / session | 800,000 | session_id (PK), customer_id (FK, nullable = anonymous), session_start_ts, device_type, traffic_source, landing_page, campaign_id (nullable) |
+| 6 | `web_events` | 1 row / funnel step | ~1,430,000 | event_id (PK), session_id (FK), event_type (page_view → product_view → add_to_cart → begin_checkout → purchase), event_ts, product_id (nullable), order_id (nullable, purchase only) |
 | 7 | `marketing_spend` | 1 row / day / channel | ~3,650 | spend_date, channel (paid_search, paid_social, email, affiliate, display), spend_amount, impressions, clicks, attributed_signups |
-| 8 | `ab_test_assignments` | 1 row / customer in test | 30,000 | assignment_id (PK), customer_id (FK), test_name ('free_shipping_threshold'), variant (control/treatment), assigned_date, converted_flag, order_id (nullable) |
-| 9 | `reviews_nps` | 1 row / review | 20,000 | review_id (PK), customer_id (FK), order_id (FK), review_ts, star_rating (1–5), nps_score (0–10), review_channel |
+| 8 | `ab_test_assignments` | 1 row / session in test window | 60,000 | assignment_id (PK), session_id (FK), customer_id (FK, nullable), test_name ('free_shipping_threshold'), variant (control/treatment), assigned_date, converted_flag, order_id (nullable) |
+| 9 | `reviews_nps` | 1 row / review | ~4,600 | review_id (PK), customer_id (FK), order_id (FK), review_ts, star_rating (1–5), nps_score (0–10), review_channel |
 
-**Relationships (star-friendly):** customers 1—N orders 1—N order_items N—1 products; customers 1—N web_sessions 1—N web_events; web_events.purchase links to orders; marketing_spend joins on date+channel to sessions.traffic_source and customers.acquisition_channel; ab_test_assignments and reviews_nps hang off customers/orders.
+**Relationships (star-friendly):** customers 1—N orders 1—N order_items N—1 products; customers 1—N web_sessions 1—N web_events; web_events.purchase links to orders; marketing_spend joins on date+channel to sessions.traffic_source and customers.acquisition_channel; ab_test_assignments hangs off web_sessions; reviews_nps hangs off customers/orders.
 
 ### 4.1 Behavioral realism rules (baked into generators, verified by calibration checks)
 
 - **Pareto concentration:** top ~20% of customers generate ~55–60% of revenue.
 - **Retention reality:** ~69% of customers are one-time buyers; repeat-purchase probability increases with each successive order (2nd→3rd easier than 1st→2nd).
-- **Funnel decay:** session → product_view ~65% → add_to_cart ~30% → begin_checkout ~40% of carts → purchase ~85% of checkouts (net session→order ≈ 2.5%, cart abandonment ≈ 70%).
+- **Funnel decay:** session → product_view 65% of sessions → add_to_cart ~13% of product viewers → begin_checkout 40% of carts → purchase 75% of checkouts (net session→order ≈ 2.5%, cart abandonment ≈ 70%).
 - **Channel economics differ:** email traffic converts ~3x paid_social; paid channels have realistic CPC and CTR ranges; affiliate has high ROAS but low volume.
 - **Seasonality:** November–December peak (~1.8x baseline), January slump, mild summer dip; weekday > weekend for B2C electronics.
 - **Order values:** log-normal AOV around $85–95; category-dependent basket composition.
 - **Satisfaction links behavior:** low star ratings / detractor NPS raise churn probability; promoters have higher repeat rates.
-- **A/B test has a real (small) effect:** treatment (lower free-shipping threshold) lifts conversion by a plausible ~8–12% relative, detectable at n=30k but requiring a proper test — a deliberate teaching moment.
+- **A/B test has a real (small) effect:** treatment (lower free-shipping threshold) lifts session conversion by a plausible ~15% relative, detectable at 30k sessions per arm but requiring a proper power-aware test — a deliberate teaching moment.
 
 ### 4.2 Deliberate data-quality defects (for Phase 2 to catch)
 
@@ -157,7 +157,7 @@ Working mode: **phase-by-phase with checkpoints.** Each phase ends with: (1) wor
 
 ### M1 — Foundation
 - **P0 Setup:** repo scaffolding, venv + `requirements.txt`, `.env` config, MySQL database `shopsphere_dw` + bronze DDL, smoke test (Python↔MySQL and Power BI↔MySQL connectivity verified early). *Deliverables:* runnable skeleton, `docs/SETUP.md`.
-- **P1 Data generation:** 9 seeded generators + `run_all.py`; calibration test script asserts KPI targets (§4.1) within tolerance; dirty-data injection (§4.2); load to bronze. *Deliverables:* ~1.4M rows in MySQL, `docs/01_DATA_MODEL_AND_DICTIONARY.md`, calibration report.
+- **P1 Data generation:** 9 seeded generators + `run_all.py`; calibration test script asserts KPI targets (§4.1) within tolerance; dirty-data injection (§4.2); load to bronze. *Deliverables:* ~2.4M rows in MySQL, `docs/01_DATA_MODEL_AND_DICTIONARY.md`, calibration report.
 
 ### M2 — Trust the Data
 - **P2 Cleaning:** bronze→silver with explicit rule-by-rule audit (rows in/out per rule), typed silver DDL with constraints, data-quality report comparing found defects vs the manifest. *Deliverables:* silver layer, `docs/data_quality_report.md`.
