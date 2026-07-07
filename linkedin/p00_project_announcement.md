@@ -2,7 +2,7 @@
 
 **1. Hook**
 
-The average e-commerce store keeps just ~31% of its customers — and acquiring
+The average e-commerce store keeps just ~31% of its customers, and acquiring
 a new one now costs ~40% more than it did a few years ago. Most stores are
 pouring water into a leaky bucket and calling it growth.
 

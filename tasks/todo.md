@@ -25,6 +25,13 @@
 
 ## M2 — Trust the Data (next)
 
+- [x] Method bootstrap (2026-07-07): CLAUDE.md rewritten per Fable-5 handover
+      (hard rules, gates, orchestration); `docs/review-rigor-policy.md` added.
+      Verified independently: pytest 41 passed / 1 failed (known MySQL
+      integration test — `.env` exists but `shopsphere_app` access denied;
+      `sql/00_setup/00_create_database.sql` still needs running), calibration
+      8/8 PASS. GOTCHA: `codex` CLI not installed — reviewer lane 2 (fresh
+      zero-context agent) is the active fallback.
 - [ ] P2: Cleaning pipeline bronze → silver; data-quality report graded
       against `docs/dirty_data_manifest.md`
 - [ ] P3: EDA notebook + first figures for `reports/figures/`
