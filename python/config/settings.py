@@ -6,6 +6,7 @@ from datetime import date
 from pathlib import Path
 
 from dotenv import load_dotenv
+from sqlalchemy import URL
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(PROJECT_ROOT / ".env")
@@ -60,6 +61,11 @@ DB_USER = os.getenv("DB_USER", "shopsphere_app")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 
 
-def build_db_url() -> str:
-    return (f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@"
-            f"{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4")
+def build_db_url() -> URL:
+    if not DB_PASSWORD:
+        raise RuntimeError(
+            "DB_PASSWORD is not set: add it to .env or the environment")
+    return URL.create(
+        "mysql+pymysql", username=DB_USER, password=DB_PASSWORD,
+        host=DB_HOST, port=DB_PORT, database=DB_NAME,
+        query={"charset": "utf8mb4"})

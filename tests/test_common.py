@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 
 def test_rng_reproducible():
@@ -39,3 +40,14 @@ def test_load_dataframe_roundtrip_sqlite():
     df = pd.DataFrame({"a": [1, 2], "b": ["x", "y"]})
     n = load_dataframe(df, "t", eng, truncate=False)
     assert n == 2
+
+
+@pytest.mark.parametrize("bad_name", [
+    "t; DROP TABLE t", "t--", "t`", "bronze customers", "", "1t"])
+def test_load_dataframe_rejects_invalid_table_name(bad_name):
+    from sqlalchemy import create_engine
+    from utils.db_io import load_dataframe
+    eng = create_engine("sqlite:///:memory:")
+    df = pd.DataFrame({"a": [1]})
+    with pytest.raises(ValueError):
+        load_dataframe(df, bad_name, eng)
