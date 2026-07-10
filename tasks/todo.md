@@ -37,12 +37,15 @@
       9/9 defect classes matched (PERFECT), calibration 8/8 PASS, pytest
       46 passed / 1 failed (known MySQL integration test — server down).
       Silver CSVs: 9 tables, 2,362,203 rows total.
-- [ ] P2 (DB lane): blocked on Victor — MySQL80 service needs admin start
-      (`net start MySQL80` in elevated shell), then run
-      `sql/00_setup/00_create_database.sql` as root, then bronze load
-      (`run_all.py`) and `run_clean.py --load-db` for silver tables.
-      GOTCHA: working-tree `00_create_database.sql` contains the real app
-      password — must NOT be committed; revert to CHANGE_ME after applying.
+- [x] P2 (DB lane) 2026-07-10: MySQL started + setup applied by Victor
+      (password kept in tracked SQL by his decision, commit ffa235a).
+      Bronze loaded from frozen data/raw (2,362,710 rows, 9 tables, 281s);
+      silver via `run_clean.py --load-db` (quality gate 9/9, 285s).
+      Verified by SQL COUNT(*): 18 tables, bronze/silver counts match CSVs
+      exactly (e.g. orders 19,687 bronze vs 19,397 silver = 290 dupes
+      dropped). pytest now 47 passed / 0 failed. GOTCHA (resolved): `CREATE
+      USER IF NOT EXISTS` does not update an existing user's password —
+      needed root `ALTER USER` because the user pre-existed from Jul 7.
 - [x] P3: EDA notebook + first figures (2026-07-10). `notebooks/01_eda_silver.ipynb`
       executed headlessly via nbclient, no cell errors; 6 PNGs in
       `reports/figures/` (monthly_revenue, aov_distribution, funnel_conversion,
