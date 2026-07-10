@@ -43,7 +43,16 @@
       (`run_all.py`) and `run_clean.py --load-db` for silver tables.
       GOTCHA: working-tree `00_create_database.sql` contains the real app
       password — must NOT be committed; revert to CHANGE_ME after applying.
-- [ ] P3: EDA notebook + first figures for `reports/figures/`
+- [x] P3: EDA notebook + first figures (2026-07-10). `notebooks/01_eda_silver.ipynb`
+      executed headlessly via nbclient, no cell errors; 6 PNGs in
+      `reports/figures/` (monthly_revenue, aov_distribution, funnel_conversion,
+      customer_pareto, cac_by_channel, repeat_purchase). All headline numbers
+      inside calibration bands: AOV $93.96, one-time 69.2%, abandonment 70.6%,
+      top-20% 56.9%, Nov-Dec 1.40x, CAC $73.89. New pinned deps (approved by
+      Victor): matplotlib 3.11.0, nbformat 5.10.4, nbclient 0.11.0,
+      ipykernel 7.3.0. Gates: pytest 46 passed / 1 failed (known MySQL),
+      calibration 8/8 PASS. GOTCHA: 2026-06 orders +65% vs May — smooth
+      in-month ramp from the growth curve, not a defect; noted in notebook.
 
 ## Review
 
