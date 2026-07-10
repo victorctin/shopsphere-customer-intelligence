@@ -73,6 +73,21 @@
       to $1,664,813.13. Gates re-run: pytest 47 passed, calibration 8/8
       (exit 0). Views only — zero writes to bronze/silver.
 
+## M4 — Who Are Our Customers ✅
+
+- [x] RFM scoring + segmentation delivered 2026-07-10:
+      `notebooks/02_rfm_segmentation.ipynb` (executed headlessly, no cell
+      errors) + 4 figures (rfm_segment_sizes, rfm_heatmap, rfm_segment_value,
+      rfm_channel_value). Reads MySQL `gold_customer_summary` (M3 contract).
+      11,323 buyers, 9 segments via ordered (R,F) rule grid; R quintiles,
+      F fixed bins 1/2/3/4/5+, M quintiles. Headline: Hibernating 30% of
+      buyers / 18% of revenue; Champions 4% of buyers / 12% of revenue
+      (avg $487 vs $147 mean); F=1 buyers 70.4%. Validation cell asserts
+      buyers == gold_customer_pareto and revenue == $1,664,813.13 ==
+      gold_monthly_kpis (notebook fails on drift). No new dependencies —
+      segmentation is quantile/rule-based, KMeans deferred (would need
+      scikit-learn approval). Gates: pytest 47 passed, calibration 8/8.
+
 ## Review (written 2026-07-10, for a cold-started session)
 
 - **State: M1 + M2 complete.** MySQL `shopsphere_dw` is live with 18 tables:

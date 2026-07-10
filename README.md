@@ -34,7 +34,7 @@ stakeholders — end to end, from raw data to boardroom PDF.
 | **M1 — Foundation** | Synthetic data engine, bronze layer, calibration gate | ✅ Done |
 | **M2 — Trust the Data** | Cleaning to silver + data-quality report vs manifest | ✅ Done |
 | **M3 — SQL Analytics Core** | KPI views, window functions, cohort matrix in SQL | ✅ Done |
-| M4 — Who Are Our Customers | EDA, RFM, segmentation | Planned |
+| **M4 — Who Are Our Customers** | EDA, RFM, segmentation | ✅ Done |
 | M5 — Value & Risk | CLV (BG/NBD + Gamma-Gamma), churn model | Planned |
 | M6 — Experimentation | Power-aware A/B test analysis | Planned |
 | M7 — Delivery | Power BI (5 pages), Excel exec workbook | Planned |
