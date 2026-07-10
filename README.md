@@ -32,7 +32,7 @@ stakeholders — end to end, from raw data to boardroom PDF.
 | Milestone | Scope | Status |
 |---|---|---|
 | **M1 — Foundation** | Synthetic data engine, bronze layer, calibration gate | ✅ Done |
-| M2 — Trust the Data | Cleaning to silver + data-quality report vs manifest | Planned |
+| **M2 — Trust the Data** | Cleaning to silver + data-quality report vs manifest | ✅ Done |
 | M3 — SQL Analytics Core | KPI views, window functions, cohort matrix in SQL | Planned |
 | M4 — Who Are Our Customers | EDA, RFM, segmentation | Planned |
 | M5 — Value & Risk | CLV (BG/NBD + Gamma-Gamma), churn model | Planned |

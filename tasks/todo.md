@@ -57,13 +57,35 @@
       calibration 8/8 PASS. GOTCHA: 2026-06 orders +65% vs May — smooth
       in-month ramp from the growth curve, not a defect; noted in notebook.
 
-## Review
+## M3 — SQL Analytics Core (next)
 
-- M1 built a seeded synthetic store (~2.36M rows, 24 months) with 8 verified
-  behavioral realism rules and a calibration hard gate (8/8 PASS: one-time
-  buyers 69.2%, conversion 2.4%, abandonment 70.6%, AOV $94.30, top-20% share
-  57.0%, seasonality 1.40x, A/B lift 15.1%, CAC $73.89).
-- Full pytest suite: 34 passing; 1 integration test (`test_bronze_ddl.py`)
-  blocked on local MySQL credentials — will pass once `.env` exists.
-- Outstanding user action: create `.env` + run `sql/00_setup/00_create_database.sql`,
-  then `run_all.py` to load bronze (see docs/SETUP.md).
+- [ ] Short written plan first (CLAUDE.md rule for schema work): gold-layer
+      KPI views, window functions, cohort retention matrix in SQL over the
+      silver_* MySQL tables. Scope per README: "KPI views, window functions,
+      cohort matrix in SQL".
+
+## Review (written 2026-07-10, for a cold-started session)
+
+- **State: M1 + M2 complete.** MySQL `shopsphere_dw` is live with 18 tables:
+  9 bronze_* (2,362,710 rows, frozen raw) + 9 silver_* (cleaned). Gates all
+  green: pytest 47/47, calibration 8/8 PASS, quality report PERFECT 9/9.
+  EDA notebook `notebooks/01_eda_silver.ipynb` + 6 figures in
+  `reports/figures/` (headline numbers in the P3 entry above).
+- Next: M3 gold layer (see section above). Backend/schema → write the plan
+  before implementing; new SQL goes under `sql/` following the
+  `10_bronze`/`20_silver` numbering (gold = `30_gold`, verify before use).
+- GOTCHAS for the next session:
+  - MySQL80 Windows service may be stopped after reboot; starting needs an
+    elevated shell (Victor action). Test connectivity before assuming code bugs.
+  - `CREATE USER IF NOT EXISTS` never updates an existing user's password —
+    use root `ALTER USER` (bit us 2026-07-10).
+  - Real app password lives in `sql/00_setup/00_create_database.sql` by
+    Victor's explicit decision (commit ffa235a) — do NOT revert to CHANGE_ME.
+    See memory `credentials-in-setup-sql-by-decision`.
+  - `run_all.py` REGENERATES data before loading bronze — for load-only use
+    the pattern in this session's scratchpad (run_sql_file + load_dataframe
+    from data/raw). Don't regenerate mid-batch (frozen-data rule).
+  - 2026-06 (final month) orders are +65% vs May — real growth-curve ramp,
+    not a defect; don't "fix" the generator for it.
+  - `codex` CLI not installed — adversarial review fallback is a fresh
+    zero-context agent.
