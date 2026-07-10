@@ -32,8 +32,17 @@
       `sql/00_setup/00_create_database.sql` still needs running), calibration
       8/8 PASS. GOTCHA: `codex` CLI not installed — reviewer lane 2 (fresh
       zero-context agent) is the active fallback.
-- [ ] P2: Cleaning pipeline bronze → silver; data-quality report graded
-      against `docs/dirty_data_manifest.md`
+- [x] P2 (CSV lane): Cleaning pipeline bronze → silver + quality report.
+      Verified independently 2026-07-10: `run_clean.py` exit 0, quality gate
+      9/9 defect classes matched (PERFECT), calibration 8/8 PASS, pytest
+      46 passed / 1 failed (known MySQL integration test — server down).
+      Silver CSVs: 9 tables, 2,362,203 rows total.
+- [ ] P2 (DB lane): blocked on Victor — MySQL80 service needs admin start
+      (`net start MySQL80` in elevated shell), then run
+      `sql/00_setup/00_create_database.sql` as root, then bronze load
+      (`run_all.py`) and `run_clean.py --load-db` for silver tables.
+      GOTCHA: working-tree `00_create_database.sql` contains the real app
+      password — must NOT be committed; revert to CHANGE_ME after applying.
 - [ ] P3: EDA notebook + first figures for `reports/figures/`
 
 ## Review
