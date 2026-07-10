@@ -106,6 +106,21 @@
       gold (92 completed orders lost all items in cleaning — measured, not
       assumed). Gates: pytest 55 passed (was 47), calibration 8/8.
 
+## M6 — Experimentation ✅
+
+- [x] Power-aware A/B analysis delivered 2026-07-10:
+      `notebooks/04_ab_test.ipynb` (headless, no cell errors) + 2 figures
+      (ab_conversion_ci, ab_power_curve). Test `free_shipping_threshold`,
+      30,000/arm: SRM chi-square p=1.0000 (clean randomization); conversion
+      3.43% -> 3.95%, lift +15.06% (95% CI +6.0%..+24.9%), z=3.36,
+      p=7.9e-04; design MDE @80% power = +12.5% relative, achieved power
+      91.9%. Guardrail: converted-order revenue treatment $88.80 vs control
+      $97.36, Welch p=0.071 — suggestive basket shrink, not significant;
+      revenue/assignment still favors treatment ($3.17 vs $3.00). Validation
+      asserts: n=60,000, SRM p>0.001, lift within 0.005 of calibration
+      0.151, CI excludes 0, power >0.8. No new deps (scipy.stats only).
+      Gates: pytest 55 passed, calibration 8/8.
+
 ## Review (written 2026-07-10, for a cold-started session)
 
 - **State: M1 + M2 complete.** MySQL `shopsphere_dw` is live with 18 tables:

@@ -36,7 +36,7 @@ stakeholders — end to end, from raw data to boardroom PDF.
 | **M3 — SQL Analytics Core** | KPI views, window functions, cohort matrix in SQL | ✅ Done |
 | **M4 — Who Are Our Customers** | EDA, RFM, segmentation | ✅ Done |
 | **M5 — Value & Risk** | CLV (BG/NBD + Gamma-Gamma), churn model | ✅ Done |
-| M6 — Experimentation | Power-aware A/B test analysis | Planned |
+| **M6 — Experimentation** | Power-aware A/B test analysis | ✅ Done |
 | M7 — Delivery | Power BI (5 pages), Excel exec workbook | Planned |
 | M8 — Communication | Final PDF + LinkedIn series wrap-up | Planned |
 
