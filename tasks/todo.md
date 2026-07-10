@@ -57,12 +57,21 @@
       calibration 8/8 PASS. GOTCHA: 2026-06 orders +65% vs May — smooth
       in-month ramp from the growth curve, not a defect; noted in notebook.
 
-## M3 — SQL Analytics Core (next)
+## M3 — SQL Analytics Core ✅
 
-- [ ] Short written plan first (CLAUDE.md rule for schema work): gold-layer
-      KPI views, window functions, cohort retention matrix in SQL over the
-      silver_* MySQL tables. Scope per README: "KPI views, window functions,
-      cohort matrix in SQL".
+- [x] Plan written first per CLAUDE.md rule: `docs/m3_gold_plan.md`.
+- [x] Gold layer delivered 2026-07-10: 12 views in `sql/30_gold/`
+      (01 KPI views: order_revenue, monthly_kpis, funnel, channel_cac_monthly,
+      customer_summary, nps_monthly; 02 window views: revenue_trend,
+      customer_pareto, customer_order_seq, top_products; 03 cohort_retention).
+      Applied + gated by `python/03_gold/run_gold.py` — M3 gate 5/5 PASS:
+      AOV 93.9564, one-time 0.6921, abandonment 0.7060, top-20% 0.5686,
+      paid CAC 73.8937 (each ±0.5% vs P3 pandas values). Adversarial extra
+      checks (scratchpad, money-logic review rule): cohort matrix SQL vs
+      independent pandas 267/267 cells exact, cohort_size consistent, NPS
+      8.201 / stars 4.048 vs notebook 8.20/4.05, cumulative revenue ties out
+      to $1,664,813.13. Gates re-run: pytest 47 passed, calibration 8/8
+      (exit 0). Views only — zero writes to bronze/silver.
 
 ## Review (written 2026-07-10, for a cold-started session)
 
