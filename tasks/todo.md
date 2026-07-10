@@ -88,6 +88,24 @@
       segmentation is quantile/rule-based, KMeans deferred (would need
       scikit-learn approval). Gates: pytest 47 passed, calibration 8/8.
 
+## M5 — Value & Risk ✅
+
+- [x] CLV + churn delivered 2026-07-10. New deps approved by Victor:
+      scipy==1.18.0, scikit-learn==1.9.0 (pinned). `python/04_model/btyd.py`:
+      BG/NBD + Gamma-Gamma implemented on numpy/scipy (the `lifetimes` lib is
+      unmaintained); 8 unit tests in `tests/test_btyd.py` incl. seeded
+      parameter recovery <25% rel. err. `notebooks/03_clv_churn.ipynb`
+      (headless, no cell errors) + 3 figures (clv_distribution,
+      churn_roc_calibration, churn_feature_importance). Numbers: 26-week
+      time-split backtest pred/actual = 1.06 (1,180 vs 1,110 repeat
+      purchases), corr(x,m_x)=0.001 (GG independence OK), 12-mo CLV total
+      $282,875 / mean $25.09 / top decile 38.2%; churn (26w holdout label,
+      pre-cutoff features, no leakage): AUC logistic 0.813, grad boosting
+      0.793, base rate 89.9%. Validation cell asserts revenue ==
+      $1,664,813.13 == gold and buyer gap (46) == zero-revenue buyers in
+      gold (92 completed orders lost all items in cleaning — measured, not
+      assumed). Gates: pytest 55 passed (was 47), calibration 8/8.
+
 ## Review (written 2026-07-10, for a cold-started session)
 
 - **State: M1 + M2 complete.** MySQL `shopsphere_dw` is live with 18 tables:
