@@ -164,6 +164,16 @@
 - [x] Gates: pytest 62 passed / 0 failed (was 55; +7 unit tests in
       `tests/test_final_report.py`, no MySQL/Edge needed), calibration 8/8
       PASS, report gate 6/6.
+- [x] Adversarial review (attack-the-claims, fresh zero-context agent —
+      codex CLI still absent) 2026-07-11: 7 findings, all remediated except
+      F6 (claim-wording only; M7↔M3 SQL hand-copy predates this diff,
+      verified textually in sync). Fixed: stale-PDF mask (unlink + %PDF
+      magic), stale-but-labeled-live narrative (cover wording + live
+      $buyers/$ab_conv_* placeholders), placeholder check now
+      Template.get_identifiers() (catches $Caps/${braced}), None data-window
+      guard, find_edge() before artifact writes, PNG magic check. +4 pinning
+      tests. Post-remediation gates re-run personally: report gate 6/6
+      (PDF 905,311 bytes), pytest 66 passed / 0 failed, calibration 8/8.
 
 ## Review (written 2026-07-11, for a cold-started session)
 
@@ -171,7 +181,7 @@
   (9 bronze_* + 9 silver_* tables + 12 gold_* views). Deliverables: 4 executed
   notebooks + 15 figures, Excel workbook (gate 5/5), Power BI pbix (model +
   data loaded), final PDF report (gate 6/6), LinkedIn drafts P00–P08. Gates
-  green: pytest 62 passed, calibration 8/8, quality report PERFECT 9/9.
+  green: pytest 66 passed, calibration 8/8, quality report PERFECT 9/9.
 - Remaining Victor-only steps: Power BI report pages by hand
   (`docs/m7_powerbi_page_checklist.md`, 45–60 min), eyeball the final PDF
   layout once, publish the LinkedIn drafts.

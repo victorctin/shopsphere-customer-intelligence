@@ -47,8 +47,7 @@ EDGE_CANDIDATES = [
     r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
 ]
-# string.Template placeholder that survived substitution ⇒ template drift.
-LEFTOVER_RE = re.compile(r"\$[a-z_][a-z0-9_]*")
+PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 KPI_JSON_RE = re.compile(
     r'<script type="application/json" id="kpi-values">(.*?)</script>',
     re.DOTALL)
@@ -78,7 +77,10 @@ def embed_figures(figures_dir: Path) -> dict:
         png = figures_dir / f"{name}.png"
         if not png.is_file():
             raise FileNotFoundError(f"Missing figure: {png}")
-        encoded = base64.b64encode(png.read_bytes()).decode("ascii")
+        data = png.read_bytes()
+        if not data.startswith(PNG_MAGIC):
+            raise ValueError(f"Not a valid PNG (bad magic): {png}")
+        encoded = base64.b64encode(data).decode("ascii")
         out[f"fig_{name}"] = f"data:image/png;base64,{encoded}"
     return out
 
@@ -112,20 +114,21 @@ def format_values(kpis: dict, ab: dict, data_window: str) -> dict:
         "nps": f"{kpis['nps']:.1f}",
         "ab_lift": f"{ab['lift']:+.1%}",
         "ab_p": f"{ab['p_value']:.1e}",
+        "ab_conv_control": f"{ab['conv_control']:.2%}",
+        "ab_conv_treatment": f"{ab['conv_treatment']:.2%}",
         "kpi_json": json.dumps(raw),
     }
 
 
 def render_html(template_text: str, values: dict) -> str:
     """safe_substitute (the prose contains literal $-amounts like $487),
-    then fail loud if any known-shaped placeholder survived."""
-    html = Template(template_text).safe_substitute(values)
-    # Literal prose $-amounts are all $<digit>, so any surviving
-    # $identifier is an unfilled placeholder.
-    leftover = sorted({m.group(0) for m in LEFTOVER_RE.finditer(html)})
-    if leftover:
-        raise ValueError(f"Unfilled template placeholders: {leftover}")
-    return html
+    after failing loud on any template placeholder missing from values —
+    get_identifiers() sees every $name/${name} form, any case."""
+    template = Template(template_text)
+    missing = sorted(set(template.get_identifiers()) - values.keys())
+    if missing:
+        raise ValueError(f"Unfilled template placeholders: {missing}")
+    return template.safe_substitute(values)
 
 
 def extract_kpi_json(html_text: str) -> dict:
@@ -136,6 +139,8 @@ def extract_kpi_json(html_text: str) -> dict:
 
 
 def print_pdf(edge: str, html_path: Path, pdf_path: Path) -> None:
+    # A stale PDF from a previous run must not mask an Edge failure.
+    pdf_path.unlink(missing_ok=True)
     cmd = [edge, "--headless", "--disable-gpu", "--no-pdf-header-footer",
            "--virtual-time-budget=10000",
            f"--print-to-pdf={pdf_path}", html_path.resolve().as_uri()]
@@ -144,9 +149,19 @@ def print_pdf(edge: str, html_path: Path, pdf_path: Path) -> None:
         raise RuntimeError(
             f"Edge print-to-pdf failed (rc={result.returncode}): "
             f"{result.stderr.strip()[-500:]}")
+    with pdf_path.open("rb") as fh:
+        if fh.read(5) != b"%PDF-":
+            raise RuntimeError(f"Edge wrote a non-PDF file: {pdf_path}")
+
+
+def make_data_window(first, last) -> str:
+    if first is None or last is None:
+        raise ValueError("gold_revenue_trend returned no months — empty view?")
+    return f"{first} – {last}"
 
 
 def build(engine) -> dict:
+    edge = find_edge()          # fail before writing any artifact
     kpis = compute_kpis(engine)
     ab = compute_ab(engine)
     with engine.connect() as conn:
@@ -154,11 +169,11 @@ def build(engine) -> dict:
             "SELECT MIN(order_month) FROM gold_revenue_trend")).scalar_one()
         last = conn.execute(text(
             "SELECT MAX(order_month) FROM gold_revenue_trend")).scalar_one()
-    values = format_values(kpis, ab, f"{first} – {last}")
+    values = format_values(kpis, ab, make_data_window(first, last))
     values.update(embed_figures(FIGURES_DIR))
     html = render_html(TEMPLATE_PATH.read_text(encoding="utf-8"), values)
     HTML_PATH.write_text(html, encoding="utf-8")
-    print_pdf(find_edge(), HTML_PATH, PDF_PATH)
+    print_pdf(edge, HTML_PATH, PDF_PATH)
     return {"kpis": kpis, "ab": ab}
 
 

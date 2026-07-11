@@ -50,7 +50,8 @@
   <div class="rule"></div>
   <div class="meta">
     Data window: $data_window<br>
-    Generated: $build_date · Source: MySQL gold layer (live queries)<br>
+    Generated: $build_date · Headline KPIs queried live from the MySQL gold
+    layer; model metrics quote the validated notebooks<br>
     All data synthetic, calibrated to 2026 industry benchmarks
   </div>
 </div>
@@ -75,7 +76,7 @@ that number.</p>
       <td>A/B free-shipping lift</td><td class="num">$ab_lift (p = $ab_p)</td></tr>
 </table>
 <div class="callout"><strong>Top recommendations</strong> (detail in §6):
-roll out the free-shipping threshold (+15.1% conversion, p&lt;0.001);
+roll out the free-shipping threshold ($ab_lift conversion, p = $ab_p);
 run a second-purchase program for the 70% one-time buyers; win back the
 Hibernating segment (30% of buyers, 18% of revenue); protect Champions
 (4% of buyers, 12% of revenue).</div>
@@ -128,7 +129,7 @@ first → second order; each later step retains more.</p>
   <div class="fig"><img src="$fig_repeat_purchase" alt="Repeat purchase ladder">
     <div class="caption">Repeat-purchase ladder</div></div>
 </div>
-<h3>RFM segmentation (11,323 buyers, 9 segments)</h3>
+<h3>RFM segmentation ($buyers buyers, 9 segments)</h3>
 <p>Champions are 4% of buyers but 12% of revenue (avg $487 vs $147 overall);
 Hibernating is the largest segment at 30% of buyers holding 18% of historic
 revenue — the natural win-back target.</p>
@@ -166,7 +167,8 @@ retention spend, with recency and frequency dominating the signal.</p>
 
 <div class="section"><h2>5 · Experimentation — Free-Shipping Threshold</h2>
 <p>A 30,000-per-arm A/B test (randomization verified: SRM χ² p = 1.0000)
-raised conversion from 3.43% to 3.95% — <strong>$ab_lift relative lift</strong>
+raised conversion from $ab_conv_control to $ab_conv_treatment —
+<strong>$ab_lift relative lift</strong>
 (95% CI +6.0% … +24.9%, z = 3.36, p = $ab_p), at 91.9% achieved power against
 a +12.5% design MDE.</p>
 <div class="fig-pair">
@@ -183,7 +185,7 @@ not significant basket shrink. Revenue per assignment still favors treatment
 <div class="section"><h2>6 · Recommendations</h2>
 <ol class="rec">
   <li><strong>Roll out the free-shipping threshold to 100% of traffic.</strong>
-    +15.1% conversion at p &lt; 0.001 with power 91.9%; keep the basket-size
+    $ab_lift conversion at p = $ab_p with power 91.9%; keep the basket-size
     guardrail on a dashboard (it was suggestive at p = 0.071, not proven).</li>
   <li><strong>Stand up a second-purchase program.</strong> $one_time_rate of
     buyers stop at one order, and the ladder shows first → second is the
