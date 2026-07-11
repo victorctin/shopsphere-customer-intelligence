@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ShopSphere — Customer Intelligence Final Report</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1a1a2e; font-size: 10.5pt; line-height: 1.5; margin: 0;
+  }
+  h1 { font-size: 20pt; margin: 0 0 4pt; }
+  h2 {
+    font-size: 14pt; margin: 18pt 0 8pt; padding-bottom: 4pt;
+    border-bottom: 2px solid #1f77b4; color: #123c5e;
+  }
+  h3 { font-size: 11.5pt; margin: 12pt 0 4pt; color: #123c5e; }
+  p, li { margin: 4pt 0; }
+  .cover { text-align: center; padding-top: 220pt; page-break-after: always; }
+  .cover .subtitle { font-size: 13pt; color: #555; margin-top: 8pt; }
+  .cover .meta { margin-top: 40pt; color: #777; font-size: 10pt; }
+  .cover .rule { width: 160pt; border-top: 2px solid #1f77b4; margin: 16pt auto; }
+  .section { page-break-before: always; }
+  .kpi-table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
+  .kpi-table th, .kpi-table td {
+    border: 1px solid #cfd8e3; padding: 4pt 8pt; text-align: left;
+  }
+  .kpi-table th { background: #eef3f8; font-weight: 600; }
+  .kpi-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .fig { text-align: center; margin: 10pt 0; page-break-inside: avoid; }
+  .fig img { max-width: 100%; max-height: 300pt; }
+  .fig .caption { font-size: 9pt; color: #666; margin-top: 2pt; }
+  .fig-pair { display: flex; gap: 8pt; page-break-inside: avoid; }
+  .fig-pair .fig { flex: 1; min-width: 0; }
+  .callout {
+    background: #eef3f8; border-left: 3pt solid #1f77b4;
+    padding: 6pt 10pt; margin: 8pt 0; page-break-inside: avoid;
+  }
+  .gate { color: #1a7a3a; font-weight: 600; }
+  .footer-note { font-size: 8.5pt; color: #888; margin-top: 24pt; }
+  ol.rec > li { margin: 6pt 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>ShopSphere Customer Intelligence System</h1>
+  <div class="subtitle">Final Report — Retention, Value and Experimentation</div>
+  <div class="rule"></div>
+  <div class="meta">
+    Data window: $data_window<br>
+    Generated: $build_date · Source: MySQL gold layer (live queries)<br>
+    All data synthetic, calibrated to 2026 industry benchmarks
+  </div>
+</div>
+
+<h2>Executive Summary</h2>
+<p>ShopSphere is a synthetic-but-realistic online retailer analyzed end-to-end:
+24 months, 12,000 customers, ~2.36M rows through a bronze → silver → gold
+MySQL warehouse. The central finding: <strong>$one_time_rate of buyers never
+purchase a second time</strong>, and the highest-leverage actions all attack
+that number.</p>
+<table class="kpi-table">
+  <tr><th>KPI</th><th>Value</th><th>KPI</th><th>Value</th></tr>
+  <tr><td>Total completed revenue</td><td class="num">$total_revenue</td>
+      <td>One-time buyer rate</td><td class="num">$one_time_rate</td></tr>
+  <tr><td>Completed orders</td><td class="num">$completed_orders</td>
+      <td>Cart abandonment</td><td class="num">$abandonment</td></tr>
+  <tr><td>Average order value</td><td class="num">$aov</td>
+      <td>Top-20% buyers' revenue share</td><td class="num">$top20_share</td></tr>
+  <tr><td>Unique buyers</td><td class="num">$buyers</td>
+      <td>Blended paid CAC</td><td class="num">$paid_cac</td></tr>
+  <tr><td>NPS (response-weighted)</td><td class="num">$nps</td>
+      <td>A/B free-shipping lift</td><td class="num">$ab_lift (p = $ab_p)</td></tr>
+</table>
+<div class="callout"><strong>Top recommendations</strong> (detail in §6):
+roll out the free-shipping threshold (+15.1% conversion, p&lt;0.001);
+run a second-purchase program for the 70% one-time buyers; win back the
+Hibernating segment (30% of buyers, 18% of revenue); protect Champions
+(4% of buyers, 12% of revenue).</div>
+
+<div class="section"><h2>1 · Data Foundation — Trust Before Analysis</h2>
+<p>Every number in this report sits on a verified pipeline:</p>
+<ul>
+  <li><strong>Seeded generation</strong> — 8 behavioral realism rules (Pareto
+    concentration, repeat-purchase ladder, funnel decay, channel economics,
+    seasonality, price-elastic baskets, satisfaction–loyalty link, a real A/B
+    effect). A calibration gate fails the build if any of 8 checks drifts from
+    its industry band: <span class="gate">8/8 PASS</span>.</li>
+  <li><strong>Deliberate dirt, graded cleaning</strong> — 9 defect classes
+    injected with a ground-truth manifest; the bronze → silver cleaning
+    pipeline was graded against it: <span class="gate">9/9 caught
+    (PERFECT)</span>. 2,362,710 bronze rows → 2,362,203 silver rows;
+    e.g. 290 duplicate orders removed (19,687 → 19,397).</li>
+  <li><strong>SQL gold layer</strong> — 12 views (KPIs, window functions,
+    cohort retention). Gate vs independent pandas recomputation:
+    <span class="gate">5/5 PASS</span>, cohort matrix exact in
+    267/267 cells.</li>
+</ul></div>
+
+<div class="section"><h2>2 · Business Health</h2>
+<p>Revenue grows steadily with a 1.40× Nov–Dec seasonal peak; the final month's
+jump is the growth curve's in-month ramp, not an anomaly. AOV averages $aov
+across $completed_orders completed orders.</p>
+<div class="fig"><img src="$fig_monthly_revenue" alt="Monthly revenue">
+  <div class="caption">Monthly completed revenue, 24 months</div></div>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_aov_distribution" alt="AOV distribution">
+    <div class="caption">Order value distribution</div></div>
+  <div class="fig"><img src="$fig_funnel_conversion" alt="Funnel">
+    <div class="caption">Session → purchase funnel</div></div>
+</div>
+<p>The funnel loses $abandonment of carts before checkout — the single
+largest recoverable revenue pool. On the acquisition side, blended paid CAC
+is $paid_cac with email converting ~3× paid social.</p>
+<div class="fig"><img src="$fig_cac_by_channel" alt="CAC by channel">
+  <div class="caption">Customer acquisition cost by channel</div></div></div>
+
+<div class="section"><h2>3 · Who the Customers Are</h2>
+<p>Revenue is concentrated: the top 20% of buyers contribute $top20_share of
+revenue, and $one_time_rate of buyers purchased exactly once. The
+repeat-purchase ladder confirms the classic pattern — the hardest step is
+first → second order; each later step retains more.</p>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_customer_pareto" alt="Customer Pareto">
+    <div class="caption">Cumulative revenue vs buyer rank</div></div>
+  <div class="fig"><img src="$fig_repeat_purchase" alt="Repeat purchase ladder">
+    <div class="caption">Repeat-purchase ladder</div></div>
+</div>
+<h3>RFM segmentation (11,323 buyers, 9 segments)</h3>
+<p>Champions are 4% of buyers but 12% of revenue (avg $487 vs $147 overall);
+Hibernating is the largest segment at 30% of buyers holding 18% of historic
+revenue — the natural win-back target.</p>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_rfm_segment_sizes" alt="RFM segment sizes">
+    <div class="caption">Segment sizes</div></div>
+  <div class="fig"><img src="$fig_rfm_heatmap" alt="RFM heatmap">
+    <div class="caption">R × F grid</div></div>
+</div>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_rfm_segment_value" alt="Segment value">
+    <div class="caption">Revenue by segment</div></div>
+  <div class="fig"><img src="$fig_rfm_channel_value" alt="Channel value">
+    <div class="caption">Segment value by acquisition channel</div></div>
+</div></div>
+
+<div class="section"><h2>4 · Value &amp; Risk — CLV and Churn</h2>
+<p>A BG/NBD + Gamma-Gamma model (implemented on scipy, validated by a 26-week
+time-split backtest: predicted/actual repeat purchases = 1.06) projects
+<strong>$282,875 of 12-month CLV</strong> across the base — mean $25.09 per
+buyer, with the top decile holding 38.2% of it. Future 12-month CLV alone does
+not repay the $paid_cac blended CAC; acquisition must be justified on
+multi-year value and aimed at high-CLV lookalikes.</p>
+<div class="fig"><img src="$fig_clv_distribution" alt="CLV distribution">
+  <div class="caption">12-month CLV distribution (top decile: 38.2% of value)</div></div>
+<p>A churn model (26-week holdout, leakage-checked features) reaches
+AUC 0.813 against an 89.9% base churn rate — good enough to rank buyers for
+retention spend, with recency and frequency dominating the signal.</p>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_churn_roc_calibration" alt="Churn ROC">
+    <div class="caption">ROC and calibration</div></div>
+  <div class="fig"><img src="$fig_churn_feature_importance" alt="Feature importance">
+    <div class="caption">Churn model feature importance</div></div>
+</div></div>
+
+<div class="section"><h2>5 · Experimentation — Free-Shipping Threshold</h2>
+<p>A 30,000-per-arm A/B test (randomization verified: SRM χ² p = 1.0000)
+raised conversion from 3.43% to 3.95% — <strong>$ab_lift relative lift</strong>
+(95% CI +6.0% … +24.9%, z = 3.36, p = $ab_p), at 91.9% achieved power against
+a +12.5% design MDE.</p>
+<div class="fig-pair">
+  <div class="fig"><img src="$fig_ab_conversion_ci" alt="A/B conversion CI">
+    <div class="caption">Conversion by arm with 95% CI</div></div>
+  <div class="fig"><img src="$fig_ab_power_curve" alt="Power curve">
+    <div class="caption">Power curve vs relative lift</div></div>
+</div>
+<div class="callout"><strong>Guardrail</strong>: converted-order revenue was
+$88.80 (treatment) vs $97.36 (control), Welch p = 0.071 — a suggestive but
+not significant basket shrink. Revenue per assignment still favors treatment
+($3.17 vs $3.00). Ship, and monitor basket size in production.</div></div>
+
+<div class="section"><h2>6 · Recommendations</h2>
+<ol class="rec">
+  <li><strong>Roll out the free-shipping threshold to 100% of traffic.</strong>
+    +15.1% conversion at p &lt; 0.001 with power 91.9%; keep the basket-size
+    guardrail on a dashboard (it was suggestive at p = 0.071, not proven).</li>
+  <li><strong>Stand up a second-purchase program.</strong> $one_time_rate of
+    buyers stop at one order, and the ladder shows first → second is the
+    hardest step; a post-first-purchase sequence attacks the villain number
+    of this whole analysis.</li>
+  <li><strong>Win back Hibernating, protect Champions.</strong> Hibernating =
+    30% of buyers / 18% of revenue (reactivation offers); Champions = 4% /
+    12% at $487 avg (loyalty perks, no discounting needed).</li>
+  <li><strong>Target acquisition by CLV, not volume.</strong> Mean 12-month
+    CLV ($25.09) is far below blended paid CAC ($paid_cac); the top CLV decile
+    holds 38.2% of future value — shift budget toward email/lookalikes of
+    high-CLV profiles and away from the most expensive paid channels.</li>
+  <li><strong>Attack cart abandonment ($abandonment).</strong> The funnel's
+    largest leak; recovery emails and checkout friction reduction are the
+    standard levers, now measurable month-over-month in the gold layer.</li>
+</ol></div>
+
+<div class="section"><h2>Appendix · Method &amp; Reproducibility</h2>
+<ul>
+  <li><strong>Stack</strong>: Python (seeded generators, cleaning, scipy/sklearn
+    models) → MySQL 8 medallion warehouse (bronze/silver/gold) → SQL window
+    functions → Excel workbook, Power BI dashboard, this report.</li>
+  <li><strong>Determinism</strong>: one seed in <code>settings.py</code>;
+    same seed ⇒ byte-identical CSVs.</li>
+  <li><strong>Gates</strong> (all green at build time): calibration 8/8,
+    cleaning quality 9/9, gold KPI gate 5/5, Excel workbook gate 5/5,
+    Power BI DAX acceptance 8/8, pytest suite, and this report's own
+    self-validation gate (KPIs re-checked against live SQL after render).</li>
+  <li><strong>Headline KPIs in this report are queried live</strong> from the
+    gold views at build time with the same SQL as the M3 gate; model metrics
+    quote the executed, validated notebooks.</li>
+</ul>
+<p class="footer-note">ShopSphere is a synthetic retailer: all data generated,
+calibrated to 2026 industry benchmarks, and verified by the gates above.
+Report built by <code>python/05_delivery/build_final_report.py</code>.</p></div>
+
+<script type="application/json" id="kpi-values">$kpi_json</script>
+</body>
+</html>

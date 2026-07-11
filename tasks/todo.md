@@ -143,14 +143,38 @@
       Page visuals are Victor's by-hand step per
       `docs/m7_powerbi_page_checklist.md` (45–60 min, not yet done).
 
+## M8 — Communication ✅
+
+- [x] Plan first: `docs/m8_communication_plan.md` (LinkedIn scope = full
+      series P02–P08 and PDF via HTML → headless Edge, both chosen by Victor
+      2026-07-11).
+- [x] Final PDF report 2026-07-11: `python/05_delivery/build_final_report.py`
+      + `report_template.html` → `reports/shopsphere_final_report.html`
+      (self-contained, 15 figures base64) + `.pdf` (905,212 bytes, headless
+      Edge print, zero new deps). KPIs queried live with the M3-gate SQL
+      (reused from `build_excel_workbook.py`); self-validation gate 6/6 PASS
+      (revenue 1,664,813.13 exact vs SQL, buyers 11,323, AOV 93.9564,
+      lift 0.1506, 15/15 figures embedded, PDF size floor). Visual layout of
+      the PDF NOT eyeballed (no poppler for page rendering) — Victor should
+      open it once before sharing.
+- [x] LinkedIn series completed: p02_data_cleaning, p03_eda, p04_sql_gold,
+      p05_rfm_segmentation, p06_clv_churn, p07_ab_test, p08_delivery_wrapup —
+      same 7-section template as P00/P01, every number from the verified
+      board values. Drafts only; publishing is Victor's step.
+- [x] Gates: pytest 62 passed / 0 failed (was 55; +7 unit tests in
+      `tests/test_final_report.py`, no MySQL/Edge needed), calibration 8/8
+      PASS, report gate 6/6.
+
 ## Review (written 2026-07-11, for a cold-started session)
 
-- **State: M1–M7 complete.** MySQL `shopsphere_dw` live (9 bronze_* + 9
-  silver_* tables + 12 gold_* views). Deliverables: 4 executed notebooks +
-  15 figures, Excel workbook (gate 5/5), Power BI pbix (model + data loaded,
-  visuals pending Victor). Gates green: pytest 55 passed, calibration 8/8,
-  quality report PERFECT 9/9.
-- Next: M8 — Communication (final PDF + LinkedIn wrap-up). Not started.
+- **State: M1–M8 complete — project delivered.** MySQL `shopsphere_dw` live
+  (9 bronze_* + 9 silver_* tables + 12 gold_* views). Deliverables: 4 executed
+  notebooks + 15 figures, Excel workbook (gate 5/5), Power BI pbix (model +
+  data loaded), final PDF report (gate 6/6), LinkedIn drafts P00–P08. Gates
+  green: pytest 62 passed, calibration 8/8, quality report PERFECT 9/9.
+- Remaining Victor-only steps: Power BI report pages by hand
+  (`docs/m7_powerbi_page_checklist.md`, 45–60 min), eyeball the final PDF
+  layout once, publish the LinkedIn drafts.
 - GOTCHAS for the next session:
   - Power BI modeling MCP: msmdsrv port CHANGES on every Desktop restart —
     always ListLocalInstances then Connect; "base version must not be
