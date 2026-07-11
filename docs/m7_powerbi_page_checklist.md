@@ -5,17 +5,22 @@ Power BI Desktop instance by the orchestrator via the modeling tools. This doc
 is the by-hand part: which visuals to place on each page and which fields and
 measures they use. Estimated hands-on time: 45–60 minutes.
 
-Source: MySQL `shopsphere_dw` gold views, import mode. Refresh = Home →
-Refresh (re-runs the gold views; safe, they are read-only views).
+Source: MySQL `shopsphere_dw` gold views, import mode via ODBC
+(`MySQL ODBC 9.7 Unicode Driver` — Connector/NET is NOT detected by the
+Store-packaged Desktop). Refresh = Home → Refresh (re-runs the gold views;
+safe, they are read-only views). Credential is stored in Desktop's data
+source settings: user `shopsphere_app`.
 
 ## Model contents (built for you — do not recreate)
 
-- Tables: `gold_monthly_kpis`, `gold_revenue_trend`, `gold_funnel`,
-  `gold_channel_cac_monthly`, `gold_customer_summary`, `gold_cohort_retention`,
+- Tables (9): `gold_order_revenue` (order grain — feeds Total Revenue/AOV),
+  `gold_customer_summary`, `gold_monthly_kpis`, `gold_revenue_trend`,
+  `gold_funnel`, `gold_channel_cac_monthly`, `gold_cohort_retention`,
   `gold_top_products`, `gold_nps_monthly`.
-- Measures live on `gold_monthly_kpis` unless noted: Total Revenue, Completed
+- Measures (12), spread across tables: Total Revenue, Completed
   Orders, AOV, Unique Buyers, One-time Rate, Repeat Rate, Abandonment %,
-  Paid CAC, NPS, MoM Revenue %, Cumulative Revenue, AB Lift %.
+  Paid CAC, NPS Overall (renamed — `gold_nps_monthly` already has a column
+  `nps`), MoM Revenue %, Cumulative Revenue, AB Lift %.
 
 ## Page 1 — Executive Overview
 

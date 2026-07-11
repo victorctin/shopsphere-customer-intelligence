@@ -121,17 +121,49 @@
       0.151, CI excludes 0, power >0.8. No new deps (scipy.stats only).
       Gates: pytest 55 passed, calibration 8/8.
 
-## Review (written 2026-07-10, for a cold-started session)
+## M7 — Delivery ✅
 
-- **State: M1 + M2 complete.** MySQL `shopsphere_dw` is live with 18 tables:
-  9 bronze_* (2,362,710 rows, frozen raw) + 9 silver_* (cleaned). Gates all
-  green: pytest 47/47, calibration 8/8 PASS, quality report PERFECT 9/9.
-  EDA notebook `notebooks/01_eda_silver.ipynb` + 6 figures in
-  `reports/figures/` (headline numbers in the P3 entry above).
-- Next: M3 gold layer (see section above). Backend/schema → write the plan
-  before implementing; new SQL goes under `sql/` following the
-  `10_bronze`/`20_silver` numbering (gold = `30_gold`, verify before use).
+- [x] Plan first: `docs/m7_delivery_plan.md` (openpyxl + live Power BI build
+      both approved by Victor). Excel lane 2026-07-10:
+      `python/05_delivery/build_excel_workbook.py` →
+      `reports/shopsphere_executive_workbook.xlsx`, 9 sheets, self-validation
+      gate 5/5 PASS (revenue 1,664,813.13 exact vs SQL, AOV 93.9564,
+      RFM buyers 11,323 == gold_customer_pareto, A/B lift 0.1506 within
+      0.005 of calibration 0.151). Committed ec5104f.
+- [x] Power BI lane 2026-07-11: semantic model built live via modeling MCP
+      into `reports/shopsphere_dashboard.pbix` — 9 import tables, 1
+      relationship (gold_order_revenue[customer_id] *→1
+      gold_customer_summary[customer_id]), 12 DAX measures. Data lands over
+      ODBC (`MySQL ODBC 9.7 Unicode Driver`), NOT Connector/NET — the
+      Store-packaged Desktop never detects Connector/NET (proven twice, incl.
+      after clean restart with 9.7.0 installed). DAX acceptance run on the
+      loaded model: Total Revenue 1,664,813.13 exact, AOV 93.9564,
+      Completed Orders 17,811, Unique Buyers 11,323, One-time 69.21%,
+      Abandonment 70.60%, Paid CAC 73.89, order rows 19,397 — 8/8 targets.
+      Page visuals are Victor's by-hand step per
+      `docs/m7_powerbi_page_checklist.md` (45–60 min, not yet done).
+
+## Review (written 2026-07-11, for a cold-started session)
+
+- **State: M1–M7 complete.** MySQL `shopsphere_dw` live (9 bronze_* + 9
+  silver_* tables + 12 gold_* views). Deliverables: 4 executed notebooks +
+  15 figures, Excel workbook (gate 5/5), Power BI pbix (model + data loaded,
+  visuals pending Victor). Gates green: pytest 55 passed, calibration 8/8,
+  quality report PERFECT 9/9.
+- Next: M8 — Communication (final PDF + LinkedIn wrap-up). Not started.
 - GOTCHAS for the next session:
+  - Power BI modeling MCP: msmdsrv port CHANGES on every Desktop restart —
+    always ListLocalInstances then Connect; "base version must not be
+    negative" on refresh = stale handle → Disconnect + Connect and retry.
+  - Store-packaged Power BI Desktop does not detect MySQL Connector/NET
+    (any version) — partitions use ODBC `Odbc.Query`. Power Query REFUSES
+    uid/pwd inside ODBC connection strings and Desktop doesn't support
+    `CredentialConnectionString`; the credential lives in Desktop's data
+    source settings (user `shopsphere_app`). If refresh says "Access denied
+    for user 'shopsphere_dw'" the stored credential has the wrong username —
+    fix via File → Options → Data source settings → Edit Permissions.
+  - The pbix must be saved in Desktop (Ctrl+S) after XMLA changes — the
+    model lives in the running process until saved.
   - MySQL80 Windows service may be stopped after reboot; starting needs an
     elevated shell (Victor action). Test connectivity before assuming code bugs.
   - `CREATE USER IF NOT EXISTS` never updates an existing user's password —

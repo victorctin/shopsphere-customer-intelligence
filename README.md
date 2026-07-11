@@ -37,7 +37,7 @@ stakeholders — end to end, from raw data to boardroom PDF.
 | **M4 — Who Are Our Customers** | EDA, RFM, segmentation | ✅ Done |
 | **M5 — Value & Risk** | CLV (BG/NBD + Gamma-Gamma), churn model | ✅ Done |
 | **M6 — Experimentation** | Power-aware A/B test analysis | ✅ Done |
-| M7 — Delivery | Power BI (5 pages), Excel exec workbook | Planned |
+| **M7 — Delivery** | Power BI (5 pages), Excel exec workbook | ✅ Done |
 | M8 — Communication | Final PDF + LinkedIn series wrap-up | Planned |
 
 ## Quickstart
