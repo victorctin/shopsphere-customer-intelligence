@@ -1,6 +1,6 @@
 # Data Quality Report (bronze -> silver)
 
-**Grade: PERFECT **
+**Grade: PERFECT**
 
 Graded against `docs/dirty_data_manifest.md` (injection ground truth).
 `delta` = found - injected; every class must be 0 or explicitly waived.
