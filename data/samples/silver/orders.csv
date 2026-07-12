@@ -1,0 +1,201 @@
+order_id,customer_id,order_ts,order_status,payment_method,shipping_country,discount_amount,shipping_fee,ts_conflict
+O1000000,C100000,2026-05-09 13:21:00,completed,card,Spain,0.0,0.0,0
+O1000001,C100001,2025-10-19 10:45:00,cancelled,paypal,Romania,0.0,4.99,0
+O1000002,C100002,2026-04-07 22:51:00,completed,paypal,United Kingdom,0.0,4.99,0
+O1000003,C100002,2026-04-16 16:59:00,completed,card,United Kingdom,0.0,4.99,0
+O1000004,C100002,2026-05-07 15:08:00,completed,card,United States,0.0,4.99,0
+O1000005,C100002,2026-05-07 23:31:00,completed,card,United Kingdom,0.0,0.0,0
+O1000006,C100003,2025-12-26 05:07:00,completed,card,United Kingdom,0.0,4.99,0
+O1000007,C100003,2026-05-04 19:45:00,completed,google_pay,United Kingdom,0.0,0.0,0
+O1000008,C100004,2024-10-28 01:26:00,completed,bank_transfer,Germany,0.0,4.99,0
+O1000009,C100005,2026-06-26 21:00:00,completed,card,Italy,0.0,0.0,0
+O1000010,C100006,2026-02-05 22:32:00,completed,google_pay,United Kingdom,0.0,4.99,0
+O1000011,C100006,2026-04-03 19:26:00,completed,apple_pay,United Kingdom,18.78,4.99,0
+O1000012,C100006,2026-06-18 13:27:00,completed,card,Netherlands,0.0,0.0,0
+O1000013,C100007,2026-06-27 12:31:00,completed,card,Italy,0.0,4.99,0
+O1000014,C100008,2024-11-25 12:20:00,completed,card,United Kingdom,9.6,4.99,0
+O1000015,C100009,2026-02-04 12:48:00,completed,card,Spain,0.0,0.0,0
+O1000016,C100010,2026-02-15 22:51:00,completed,card,United States,0.0,4.99,0
+O1000017,C100011,2026-06-22 11:58:00,completed,paypal,Germany,0.0,0.0,0
+O1000018,C100012,2025-11-23 01:32:00,completed,card,United States,0.0,0.0,0
+O1000019,C100013,2026-06-16 13:44:00,completed,card,United Kingdom,0.0,0.0,0
+O1000020,C100014,2025-08-01 08:53:00,cancelled,card,Netherlands,0.0,4.99,0
+O1000021,C100015,2025-06-16 12:17:00,completed,card,United States,0.0,0.0,0
+O1000022,C100015,2026-02-25 21:10:00,completed,card,United States,0.0,4.99,0
+O1000023,C100016,2025-11-01 10:09:00,completed,card,United Kingdom,0.0,4.99,0
+O1000024,C100016,2026-01-30 13:33:00,completed,card,Spain,0.0,4.99,0
+O1000025,C100017,2024-11-05 12:37:00,completed,card,Germany,0.0,4.99,0
+O1000026,C100017,2024-11-06 09:36:00,completed,paypal,Germany,0.0,4.99,0
+O1000027,C100018,2026-03-09 06:58:00,completed,paypal,Germany,0.0,4.99,0
+O1000028,C100018,2026-03-20 08:47:00,cancelled,google_pay,Germany,0.0,4.99,0
+O1000029,C100018,2026-03-21 12:14:00,completed,card,Germany,0.0,4.99,0
+O1000030,C100019,2025-12-02 11:23:00,completed,card,Germany,0.0,4.99,0
+O1000031,C100020,2026-04-30 22:02:00,completed,bank_transfer,United States,0.0,4.99,0
+O1000032,C100020,2026-05-26 13:31:00,completed,paypal,United States,9.0,0.0,0
+O1000033,C100021,2025-06-10 21:15:00,completed,card,Germany,0.0,4.99,0
+O1000034,C100022,2026-06-17 20:15:00,completed,google_pay,France,0.0,0.0,0
+O1000035,C100023,2026-04-20 19:33:00,completed,google_pay,Germany,0.0,0.0,0
+O1000036,C100024,2026-05-10 08:04:00,completed,card,Germany,0.0,4.99,0
+O1000037,C100025,2025-03-20 20:14:00,completed,paypal,France,0.0,4.99,0
+O1000038,C100026,2025-08-02 14:24:00,completed,card,Germany,0.0,0.0,0
+O1000039,C100026,2025-08-08 09:19:00,completed,card,Germany,0.0,0.0,0
+O1000040,C100027,2025-09-23 15:39:00,completed,card,Romania,0.0,0.0,0
+O1000041,C100028,2025-10-21 19:50:00,completed,paypal,France,0.0,4.99,0
+O1000042,C100029,2026-02-04 21:21:00,completed,apple_pay,France,0.0,0.0,0
+O1000043,C100029,2026-02-18 18:47:00,completed,card,France,0.0,0.0,0
+O1000044,C100030,2026-02-07 06:33:00,completed,paypal,France,0.0,4.99,0
+O1000045,C100031,2026-06-26 12:15:00,completed,bank_transfer,Italy,5.99,4.99,0
+O1000046,C100032,2025-04-18 07:02:00,completed,google_pay,Netherlands,0.0,4.99,0
+O1000047,C100033,2025-05-29 19:44:00,completed,paypal,France,0.0,0.0,0
+O1000048,C100034,2025-12-02 06:32:00,completed,apple_pay,France,0.0,4.99,0
+O1000049,C100035,2024-12-25 22:35:00,completed,bank_transfer,United Kingdom,16.87,4.99,0
+O1000050,C100035,2025-05-20 10:22:00,completed,card,United Kingdom,14.45,4.99,0
+O1000051,C100035,2025-05-22 18:15:00,completed,paypal,United Kingdom,14.84,4.99,0
+O1000052,C100036,2026-05-15 20:24:00,completed,apple_pay,Germany,0.0,0.0,0
+O1000053,C100037,2025-10-05 19:27:00,completed,card,Spain,0.0,0.0,0
+O1000054,C100037,2025-11-19 20:14:00,completed,card,Spain,9.53,0.0,0
+O1000055,C100037,2026-01-22 20:48:00,completed,card,Spain,0.0,4.99,0
+O1000056,C100038,2025-01-22 00:49:00,completed,apple_pay,Italy,0.0,0.0,0
+O1000057,C100039,2025-12-03 19:51:00,completed,google_pay,Germany,0.0,4.99,0
+O1000058,C100039,2025-12-07 20:00:00,completed,google_pay,Germany,14.07,4.99,0
+O1000059,C100040,2025-06-22 07:40:00,completed,card,Germany,0.0,0.0,0
+O1000060,C100041,2026-05-13 19:55:00,completed,google_pay,Germany,0.0,0.0,0
+O1000061,C100042,2026-03-01 21:17:00,completed,google_pay,Netherlands,9.23,4.99,0
+O1000062,C100043,2025-11-17 14:29:00,completed,card,United Kingdom,0.0,4.99,0
+O1000063,C100044,2026-05-12 15:08:00,completed,card,United Kingdom,0.0,0.0,0
+O1000064,C100044,2026-06-02 16:27:00,completed,card,United States,0.0,4.99,0
+O1000065,C100045,2026-03-10 13:42:00,completed,card,United Kingdom,0.0,4.99,0
+O1000066,C100046,2025-06-03 23:52:00,completed,card,United States,0.0,0.0,0
+O1000067,C100046,2025-07-31 21:16:00,cancelled,card,United States,10.74,4.99,0
+O1000068,C100047,2025-03-25 22:49:00,completed,paypal,United Kingdom,0.0,0.0,0
+O1000069,C100048,2026-03-19 06:57:00,completed,paypal,Germany,0.0,4.99,0
+O1000070,C100049,2024-11-18 15:33:00,completed,apple_pay,Germany,14.97,0.0,0
+O1000071,C100050,2025-03-09 22:36:00,completed,google_pay,Netherlands,0.0,4.99,0
+O1000072,C100051,2025-01-03 09:38:00,completed,card,Netherlands,0.0,4.99,0
+O1000073,C100051,2025-11-29 20:32:00,completed,card,United States,0.0,4.99,0
+O1000074,C100052,2026-06-10 17:45:00,completed,paypal,France,0.0,4.99,0
+O1000075,C100053,2025-12-21 19:29:00,completed,card,United Kingdom,0.0,0.0,0
+O1000076,C100054,2025-12-23 20:06:00,completed,card,United States,7.03,4.99,0
+O1000077,C100054,2026-05-14 01:32:00,completed,paypal,United States,0.0,4.99,0
+O1000078,C100055,2026-02-02 19:07:00,completed,card,Germany,0.0,0.0,0
+O1000079,C100055,2026-02-28 12:28:00,completed,paypal,Germany,0.0,0.0,0
+O1000080,C100055,2026-03-03 09:50:00,completed,apple_pay,Germany,0.0,4.99,0
+O1000081,C100055,2026-06-29 08:44:00,completed,card,Germany,0.0,4.99,0
+O1000082,C100056,2025-08-03 15:15:00,completed,apple_pay,United Kingdom,0.0,4.99,0
+O1000083,C100057,2025-10-25 19:09:00,completed,card,United Kingdom,0.0,4.99,0
+O1000084,C100057,2025-10-30 18:44:00,completed,card,United Kingdom,0.0,4.99,0
+O1000085,C100057,2025-11-30 23:19:00,completed,google_pay,United Kingdom,16.18,4.99,0
+O1000086,C100057,2025-12-19 18:24:00,completed,card,United Kingdom,0.0,4.99,0
+O1000087,C100057,2026-04-27 12:03:00,completed,card,Spain,0.0,0.0,0
+O1000088,C100057,2026-05-25 20:23:00,completed,card,United Kingdom,0.0,4.99,0
+O1000089,C100058,2025-05-01 19:52:00,completed,card,France,0.0,0.0,0
+O1000090,C100059,2025-03-17 18:47:00,completed,card,Italy,0.0,0.0,0
+O1000091,C100059,2025-11-14 07:38:00,completed,apple_pay,Italy,17.33,0.0,0
+O1000092,C100060,2026-01-17 12:32:00,completed,paypal,United Kingdom,0.0,4.99,0
+O1000093,C100061,2025-12-10 14:24:00,completed,card,Netherlands,0.0,4.99,0
+O1000094,C100062,2025-11-05 23:54:00,completed,card,Germany,7.74,4.99,0
+O1000095,C100063,2026-03-20 08:40:00,completed,paypal,United Kingdom,0.0,4.99,0
+O1000096,C100063,2026-03-23 06:16:00,completed,card,United Kingdom,0.0,4.99,0
+O1000097,C100063,2026-04-12 10:30:00,completed,google_pay,United Kingdom,0.0,4.99,0
+O1000098,C100063,2026-04-20 07:29:00,returned,card,United Kingdom,0.0,4.99,0
+O1000099,C100063,2026-04-27 12:18:00,completed,paypal,United Kingdom,16.94,0.0,0
+O1000100,C100063,2026-05-04 19:10:00,completed,card,United Kingdom,6.35,4.99,0
+O1000101,C100063,2026-05-25 02:52:00,completed,card,United Kingdom,0.0,4.99,0
+O1000102,C100063,2026-06-01 17:15:00,completed,paypal,United Kingdom,7.4,4.99,0
+O1000103,C100064,2025-11-29 20:01:00,completed,apple_pay,Netherlands,5.28,0.0,0
+O1000104,C100065,2025-11-22 23:22:00,completed,card,Spain,0.0,4.99,0
+O1000105,C100066,2025-10-09 06:12:00,completed,card,Romania,0.0,0.0,0
+O1000106,C100066,2025-10-12 17:16:00,cancelled,card,United Kingdom,9.17,4.99,0
+O1000107,C100066,2025-10-20 13:31:00,completed,card,Romania,0.0,4.99,0
+O1000108,C100066,2025-11-05 04:53:00,completed,card,Italy,0.0,0.0,0
+O1000109,C100066,2026-03-16 20:14:00,returned,paypal,Romania,0.0,4.99,0
+O1000110,C100067,2025-04-09 19:42:00,completed,google_pay,United Kingdom,0.0,4.99,0
+O1000111,C100067,2025-06-14 12:42:00,completed,card,United Kingdom,0.0,4.99,0
+O1000112,C100067,2025-07-18 18:56:00,completed,google_pay,United Kingdom,0.0,0.0,0
+O1000113,C100067,2025-09-09 18:53:00,completed,card,United Kingdom,12.27,4.99,0
+O1000114,C100067,2025-10-15 22:54:00,completed,card,United Kingdom,0.0,4.99,0
+O1000115,C100067,2025-11-28 00:46:00,cancelled,apple_pay,United Kingdom,0.0,4.99,0
+O1000116,C100068,2024-11-15 01:27:00,completed,bank_transfer,United Kingdom,18.31,4.99,0
+O1000117,C100069,2025-07-04 11:05:00,completed,google_pay,Spain,0.0,0.0,0
+O1000118,C100070,2025-09-19 21:41:00,completed,bank_transfer,Romania,0.0,4.99,0
+O1000119,C100071,2025-06-23 20:14:00,completed,apple_pay,France,0.0,0.0,0
+O1000120,C100072,2026-04-14 13:39:00,returned,card,United Kingdom,0.0,0.0,0
+O1000121,C100073,2025-06-17 19:14:00,completed,card,Spain,4.18,4.99,0
+O1000122,C100073,2026-05-04 12:47:00,completed,bank_transfer,Spain,10.21,0.0,0
+O1000123,C100074,2024-09-28 19:02:00,completed,card,United Kingdom,0.0,4.99,0
+O1000124,C100074,2024-10-31 20:20:00,completed,card,United States,0.0,4.99,0
+O1000125,C100075,2026-04-19 03:56:00,completed,apple_pay,Netherlands,0.0,0.0,0
+O1000126,C100076,2025-05-01 22:38:00,completed,google_pay,Netherlands,0.0,0.0,0
+O1000127,C100077,2026-04-08 17:54:00,completed,card,Germany,0.0,0.0,0
+O1000128,C100078,2025-12-19 08:07:00,completed,apple_pay,France,0.0,0.0,0
+O1000129,C100079,2026-02-14 23:21:00,completed,card,United Kingdom,0.0,4.99,0
+O1000130,C100079,2026-03-24 13:57:00,completed,card,United Kingdom,16.99,0.0,0
+O1000131,C100080,2026-02-06 23:54:00,completed,google_pay,Romania,0.0,4.99,0
+O1000132,C100080,2026-04-20 20:17:00,completed,card,Romania,0.0,4.99,0
+O1000133,C100081,2025-10-07 16:07:00,completed,card,Italy,6.17,4.99,0
+O1000134,C100082,2026-02-26 16:39:00,completed,paypal,United States,0.0,4.99,0
+O1000135,C100083,2024-12-08 07:20:00,completed,card,United Kingdom,0.0,4.99,0
+O1000136,C100083,2024-12-21 20:25:00,completed,apple_pay,United Kingdom,0.0,4.99,0
+O1000137,C100083,2024-12-23 23:28:00,completed,card,United Kingdom,0.0,4.99,0
+O1000138,C100083,2024-12-26 16:12:00,completed,card,United Kingdom,11.05,0.0,0
+O1000139,C100084,2024-09-03 13:14:00,completed,apple_pay,Germany,0.0,0.0,0
+O1000140,C100085,2024-11-23 22:44:00,completed,card,Romania,0.0,4.99,0
+O1000141,C100086,2026-04-07 16:49:00,completed,paypal,Germany,3.42,4.99,0
+O1000142,C100087,2025-09-11 20:52:00,completed,apple_pay,Spain,0.0,0.0,0
+O1000143,C100088,2024-12-20 12:08:00,completed,paypal,United Kingdom,14.56,4.99,0
+O1000144,C100088,2025-06-25 20:14:00,completed,apple_pay,France,0.0,4.99,0
+O1000145,C100088,2025-12-19 21:02:00,completed,card,United Kingdom,7.87,0.0,0
+O1000146,C100089,2025-11-05 20:27:00,completed,apple_pay,United Kingdom,0.0,4.99,0
+O1000147,C100090,2024-11-28 13:18:00,completed,card,Germany,0.0,4.99,0
+O1000148,C100091,2026-02-08 06:45:00,returned,card,Italy,0.0,4.99,0
+O1000149,C100092,2026-05-30 04:27:00,completed,card,Netherlands,0.0,4.99,0
+O1000150,C100093,2025-08-01 15:48:00,completed,card,Romania,0.0,0.0,0
+O1000151,C100094,2025-08-04 22:24:00,completed,card,Germany,0.0,0.0,0
+O1000152,C100095,2025-12-17 12:16:00,completed,google_pay,Italy,0.0,0.0,0
+O1000153,C100096,2025-05-09 19:57:00,completed,card,Italy,0.0,4.99,0
+O1000154,C100097,2025-04-11 18:59:00,completed,apple_pay,United States,0.0,0.0,0
+O1000155,C100098,2024-11-29 20:29:00,completed,card,Germany,9.8,0.0,0
+O1000156,C100099,2026-06-05 09:26:00,completed,card,Italy,5.64,0.0,0
+O1000157,C100100,2026-06-16 21:47:00,completed,card,Germany,0.0,0.0,0
+O1000158,C100101,2026-02-13 09:11:00,completed,paypal,Germany,0.0,0.0,0
+O1000159,C100101,2026-06-25 13:40:00,completed,card,Germany,0.0,0.0,0
+O1000160,C100102,2025-02-22 20:50:00,completed,card,Romania,0.0,0.0,0
+O1000161,C100103,2026-06-15 22:46:00,completed,paypal,France,5.38,4.99,0
+O1000162,C100104,2026-03-25 20:35:00,completed,google_pay,Spain,0.0,4.99,0
+O1000163,C100105,2025-12-26 10:36:00,cancelled,card,Romania,0.0,4.99,0
+O1000164,C100106,2025-10-11 16:29:00,completed,google_pay,United Kingdom,0.0,4.99,0
+O1000165,C100107,2025-09-01 16:05:00,completed,card,Germany,4.54,4.99,0
+O1000166,C100108,2024-10-15 08:59:00,completed,paypal,Netherlands,0.0,0.0,0
+O1000167,C100108,2024-11-28 00:32:00,completed,card,Netherlands,0.0,4.99,0
+O1000168,C100108,2024-12-30 18:29:00,completed,paypal,Netherlands,0.0,4.99,0
+O1000169,C100109,2026-05-27 14:04:00,completed,card,United Kingdom,0.0,0.0,0
+O1000170,C100110,2025-09-18 21:34:00,completed,paypal,Germany,0.0,4.99,0
+O1000171,C100111,2024-12-15 10:17:00,completed,card,Germany,0.0,4.99,0
+O1000172,C100112,2026-03-18 13:39:00,completed,paypal,Spain,0.0,0.0,0
+O1000173,C100113,2026-02-09 23:52:00,completed,card,United Kingdom,0.0,4.99,0
+O1000174,C100114,2024-12-16 19:53:00,completed,paypal,United Kingdom,0.0,4.99,0
+O1000175,C100115,2026-05-27 04:28:00,completed,paypal,Spain,6.56,4.99,0
+O1000176,C100116,2026-02-06 17:55:00,completed,card,United Kingdom,0.0,4.99,0
+O1000177,C100117,2025-12-26 17:59:00,completed,paypal,Italy,0.0,4.99,0
+O1000178,C100118,2025-06-27 17:17:00,cancelled,card,Germany,0.0,0.0,0
+O1000179,C100118,2025-07-10 19:26:00,returned,card,Germany,0.0,0.0,0
+O1000180,C100119,2026-01-12 13:28:00,completed,card,Spain,12.49,0.0,0
+O1000181,C100120,2025-10-26 17:52:00,completed,card,United Kingdom,0.0,4.99,0
+O1000182,C100120,2025-12-04 19:49:00,completed,card,United Kingdom,0.0,0.0,0
+O1000183,C100120,2025-12-16 10:34:00,completed,paypal,United Kingdom,0.0,4.99,0
+O1000184,C100120,2025-12-25 00:46:00,completed,card,Italy,0.0,4.99,0
+O1000185,C100120,2026-02-20 12:07:00,completed,apple_pay,United Kingdom,0.0,0.0,0
+O1000186,C100121,2025-11-27 19:32:00,completed,card,United Kingdom,0.0,4.99,0
+O1000187,C100121,2025-11-29 13:33:00,completed,apple_pay,United Kingdom,0.0,4.99,0
+O1000188,C100121,2025-12-05 18:38:00,returned,paypal,United Kingdom,0.0,4.99,0
+O1000189,C100121,2026-01-08 18:43:00,completed,paypal,United Kingdom,13.44,4.99,0
+O1000190,C100121,2026-01-15 19:09:00,completed,card,United Kingdom,0.0,0.0,0
+O1000191,C100122,2025-12-01 21:05:00,completed,paypal,Germany,0.0,4.99,0
+O1000192,C100123,2025-06-04 15:55:00,completed,card,United States,0.0,0.0,0
+O1000193,C100124,2024-12-28 11:22:00,completed,paypal,Germany,0.0,0.0,0
+O1000194,C100124,2025-06-25 02:10:00,completed,paypal,Spain,0.0,0.0,0
+O1000195,C100125,2025-10-01 02:02:00,completed,paypal,Germany,13.78,4.99,0
+O1000196,C100126,2025-04-02 09:54:00,completed,google_pay,United Kingdom,0.0,0.0,0
+O1000197,C100126,2025-04-10 13:58:00,completed,card,United Kingdom,10.91,4.99,0
+O1000198,C100126,2025-04-20 13:18:00,completed,paypal,United Kingdom,4.8,4.99,0
+O1000199,C100126,2025-04-26 06:40:00,completed,paypal,United Kingdom,0.0,4.99,0
