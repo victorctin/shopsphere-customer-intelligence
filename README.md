@@ -38,7 +38,6 @@ random seed to a boardroom PDF.
 
 Full analysis: [`reports/shopsphere_final_report.pdf`](reports/shopsphere_final_report.pdf) ·
 15 figures in [`reports/figures/`](reports/figures/) ·
-build-in-public write-ups in [`linkedin/`](linkedin/)
 
 ![Monthly revenue](reports/figures/monthly_revenue.png)
 
@@ -72,7 +71,7 @@ because each one is audited against the gold layer at build time.
 | **M5 — Value & Risk** | CLV (BG/NBD + Gamma-Gamma on scipy) + churn model, time-split backtest | ✅ |
 | **M6 — Experimentation** | Power-aware A/B analysis: SRM, MDE, achieved power, revenue guardrail | ✅ |
 | **M7 — Delivery** | Excel executive workbook + Power BI semantic model (9 tables, 12 measures) | ✅ |
-| **M8 — Communication** | Final PDF report + LinkedIn series (P00–P08) | ✅ |
+| **M8 — Communication** | Final PDF report | ✅ |
 
 ## Quickstart
 
@@ -107,7 +106,6 @@ notebooks/       4 executed analysis notebooks (EDA, RFM, CLV/churn, A/B)
 sql/             DDL: setup, bronze, silver, 12 gold views
 docs/            data model, setup, calibration + quality reports, milestone plans
 reports/         figures, Excel workbook, Power BI .pbix, final PDF
-linkedin/        the build-in-public series, P00–P08
 tests/           66 pytest tests
 ```
 
