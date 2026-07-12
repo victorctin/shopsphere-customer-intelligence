@@ -1,9 +1,7 @@
-# M7 — Power BI 5-page build checklist
+# M7 — Power BI 5-page
 
 The semantic model (tables, relationships, DAX measures) is built into the open
-Power BI Desktop instance by the orchestrator via the modeling tools. This doc
-is the by-hand part: which visuals to place on each page and which fields and
-measures they use.
+Power BI Desktop instance by the orchestrator via the modeling tools.
 
 ## Model contents
 
