@@ -1,7 +1,5 @@
 .env
 .venv/
-data/raw/
-data/silver/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -9,4 +7,5 @@ __pycache__/
 *.pbix.tmp
 
 # AI workspace
-.claude
+.claude/
+.claude-flow/
