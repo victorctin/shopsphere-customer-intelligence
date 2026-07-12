@@ -66,7 +66,7 @@ measures they use.
       assignment still favors treatment ($3.17 vs $3.00).
 - [ ] Recommendation callout: ship, monitor basket size.
 
-## Acceptance numbers (check after building)
+## Result Numbers
 
 - Total Revenue card = 1,664,813.13
 - AOV = 93.96 (±0.5%)
