@@ -30,8 +30,3 @@ cross-checked against the already-verified pandas values from the P3 notebook.
 - **DDL style:** `DROP VIEW IF EXISTS` + `CREATE VIEW`, applied through
   `run_sql_file` (same pattern as the silver DDL). No base-table writes anywhere.
 
-## Verification (numbers go in the report)
-
-1. `run_gold.py` gate: 5/5 cross-checks pass.
-2. `pytest -q`: count never drops below 47.
-3. Calibration gate untouched (no generator change) — re-run to confirm 8/8.
