@@ -1,0 +1,201 @@
+customer_id,signup_date,acquisition_channel,country,city,birth_year,gender,email,marketing_opt_in,email_valid
+C100000,2026-01-23,paid_social,Spain,North Judithbury,1993,M,valeriebennett@example.com,1,1
+C100001,2025-06-22,paid_search,Romania,East Jill,1977,F,osmith@example.org,0,1
+C100002,2026-03-26,organic,United Kingdom,New Roberttown,1978,F,baileydonna@example.com,0,1
+C100003,2025-12-10,affiliate,United Kingdom,East Jessetown,2000,F,mtrujillo@example.net,1,1
+C100004,2024-10-06,organic,Germany,Lake Debra,1981,Other,cburns@example.com,0,1
+C100005,2026-06-14,paid_search,Germany,Robinsonshire,1982,M,peter73@example.net,1,1
+C100006,2026-01-11,organic,United Kingdom,Lisatown,1984,F,charlesking@example.net,0,1
+C100007,2026-02-03,email,Italy,Lake Roberto,1985,M,garzajulia@example.com,0,1
+C100008,2024-11-04,display,Germany,Ericmouth,1996,F,vanessa88@example.com,1,1
+C100009,2025-07-01,paid_search,Spain,North Noahstad,1973,M,jenniferwilliams@example.com,1,1
+C100010,2025-04-27,affiliate,United States,Cassandraton,1985,F,dferguson@example.org,1,1
+C100011,2026-05-12,organic,Germany,Herrerafurt,2001,M,jason12@example.net,1,1
+C100012,2025-11-18,email,United States,New Kellystad,2007,M,robertokhan@example.org,1,1
+C100013,2026-03-01,organic,United Kingdom,Lake Chad,1971,F,joseph78@example.org,0,1
+C100014,2025-06-25,paid_search,Netherlands,Port Keith,1991,Other,elliottzachary@example.com,1,1
+C100015,2024-12-24,organic,United States,Port Jesseville,1985,Other,atkinsonkimberly@example.com,1,1
+C100016,2025-09-26,affiliate,Spain,Ramirezstad,1986,M,colliercharlene@example.com,0,1
+C100017,2024-09-07,email,Germany,West Michael,1978,F,williamschad@example.net,1,1
+C100018,2026-03-05,paid_social,Germany,Jacquelineland,1997,M,burchsara@example.com,1,1
+C100019,2025-11-13,organic,Germany,New Jessica,1996,F,aprilhurley@example.com,1,1
+C100020,2026-01-08,paid_search,United States,South Noah,2007,M,walexander@example.net,0,1
+C100021,2025-04-14,paid_search,Germany,Lake Mark,1972,F,crystalchandler@example.com,0,1
+C100022,2026-06-11,paid_search,France,East Lydiamouth,1967,M,meganmullins@example.org,1,1
+C100023,2026-04-19,organic,Germany,Adamsborough,2007,M,spencerjoshua@example.org,1,1
+C100024,2026-01-28,paid_social,Germany,Jasonfort,1987,Other,andrewslouis@example.net,0,1
+C100025,2024-12-07,paid_social,France,Wilkersonmouth,1982,M,hjimenez@example.org,0,1
+C100026,2025-07-15,email,Germany,West Donald,1990,M,danielhaley@example.com,1,1
+C100027,2024-08-17,paid_social,Romania,Juliechester,1971,M,david84@example.net,1,1
+C100028,2024-11-17,paid_search,France,Coxberg,1992,M,michaeljones@example.org,1,1
+C100029,2025-12-04,paid_social,France,Daviston,1987,F,gonzalezmichael@example.com,1,1
+C100030,2025-12-29,organic,France,East Courtneychester,2000,Other,lanegabriel@example.net,1,1
+C100031,2026-06-09,paid_social,Germany,South Patrickmouth,1998,F,bryan25@example.net,1,1
+C100032,2025-03-20,display,Spain,Tashatown,1999,M,,1,0
+C100033,2025-04-27,organic,France,Lake Nicoleview,1990,F,chandlerjeremy@example.org,1,1
+C100034,2025-07-18,paid_search,France,Danielchester,2007,F,angelamckinney@example.net,1,1
+C100035,2024-12-05,email,United Kingdom,South Aaron,1994,F,yarcher@example.com,1,1
+C100036,2024-11-05,paid_social,United Kingdom,Teresaburgh,1981,Other,chaneypaul@example.org,1,1
+C100037,2025-07-23,paid_social,Spain,Port Colleenhaven,1978,F,paula13@example.com,1,1
+C100038,2024-12-23,display,Italy,East Nathaniel,1979,M,hollandanne@example.com,1,1
+C100039,2025-11-29,paid_social,Germany,New Stephanie,1995,F,amandamitchell@example.net,0,1
+C100040,2025-06-20,organic,Germany,New Mariotown,1972,M,andrewgarcia@example.org,0,1
+C100041,2026-03-08,email,Germany,West Natashaport,1989,M,sallen@example.net,0,1
+C100042,2025-12-11,affiliate,Netherlands,North John,1978,F,cynthiasalas@example.com,0,1
+C100043,2025-03-09,organic,United Kingdom,North Jessicaland,1972,M,whitekaren@example.org,1,1
+C100044,2026-03-08,organic,United States,East Donna,1974,M,nataliekennedy@example.com,0,1
+C100045,2026-02-16,display,United Kingdom,West Allison,1987,M,anita85@example.org,0,1
+C100046,2025-05-11,paid_social,United States,Brandtside,1997,M,jeffreycamacho@example.org,1,1
+C100047,2025-02-17,paid_search,United Kingdom,Lake Larry,1979,F,dhicks@example.com,1,1
+C100048,2025-12-04,paid_social,Germany,Samuelhaven,1963,M,zcalderon@example.com,1,1
+C100049,2024-11-10,display,Germany,Martinezbury,2007,M,ijones@example.net,0,1
+C100050,2024-12-10,paid_social,Germany,West Andrewside,2001,M,,1,0
+C100051,2024-07-09,organic,United States,New Jeffrey,1999,M,alyssahaas@example.com,1,1
+C100052,2026-02-04,organic,France,Lake Crystalbury,2007,M,linda40@example.com,0,1
+C100053,2025-11-27,paid_search,United Kingdom,North Micheleland,1989,M,johnhuff@example.org,0,1
+C100054,2025-12-13,affiliate,United States,West Elizabeth,1986,M,csmith@example.com,0,1
+C100055,2026-01-30,paid_social,Germany,New David,2004,M,prodriguez@example.org,1,1
+C100056,2025-07-08,paid_search,United Kingdom,Sanchezfort,2004,F,katherine72@example.com,1,1
+C100057,2025-10-07,email,United Kingdom,Leeville,1995,M,matthew71@example.org,0,1
+C100058,2024-11-10,paid_search,France,Gomezchester,1998,M,acampbell@example.com,0,1
+C100059,2024-10-24,paid_social,Italy,Shieldston,1973,M,helen14@example.com,1,1
+C100060,2025-11-28,organic,United Kingdom,North Richardmouth,1984,F,shauncannon@example.com,0,1
+C100061,2025-07-19,display,Netherlands,East Jamesside,2007,F,zball@example.com,1,1
+C100062,2025-10-04,display,Germany,Taylorburgh,1997,M,tonyamorris@example.net,1,1
+C100063,2026-01-15,display,United Kingdom,Stevenland,1970,F,mpena@example.net,1,1
+C100064,2025-11-14,paid_search,Netherlands,Mortonside,1981,F,mannlisa@example.com,0,1
+C100065,2025-09-25,paid_search,Spain,North Deniseside,2006,M,gilldakota@example.org,1,1
+C100066,2025-09-30,organic,Romania,North Sarabury,1993,F,jill73@example.org,1,1
+C100067,2025-03-02,affiliate,United Kingdom,South Todd,1990,M,charles76@example.com,1,1
+C100068,2024-08-03,organic,United Kingdom,Port Richard,1990,F,csnyder@example.net,0,1
+C100069,2025-06-20,paid_social,Spain,East Nicholasfurt,1986,F,brian68@example.org,0,1
+C100070,2024-12-17,display,Romania,Saramouth,1981,Other,williamclark@example.org,0,1
+C100071,2025-05-28,organic,France,Rodneyside,1977,M,jonathonmorris@example.org,1,1
+C100072,2026-03-23,paid_search,United Kingdom,Mooreport,2000,Other,katherineflores@example.com,0,1
+C100073,2024-12-27,organic,Spain,North Beth,1990,M,wrightconnie@example.net,0,1
+C100074,2024-09-02,paid_social,United Kingdom,Lake Leeton,1996,M,nicholas33@example.net,1,1
+C100075,2025-02-11,affiliate,Netherlands,Shawhaven,1994,F,johnhanson@example.com,1,1
+C100076,2025-02-21,paid_search,Netherlands,North Susan,2004,F,,1,0
+C100077,2025-11-26,affiliate,Germany,Port Jacobland,1993,F,chris57@example.net,1,1
+C100078,2025-09-28,organic,France,South David,1997,F,richardnichols@example.org,1,1
+C100079,2026-02-02,paid_search,Romania,New Brooke,1990,M,lindaali@example.net,1,1
+C100080,2025-11-27,email,Romania,South Dianeshire,1976,M,stevengray@example.net,1,1
+C100081,2025-05-26,email,Italy,Sarahborough,1985,M,tmejia@example.net,0,1
+C100082,2026-02-23,paid_search,Romania,Johnfurt,1995,M,dcarpenter@example.net,0,1
+C100083,2024-11-23,display,United Kingdom,Lake Debbie,1996,F,timothy23@example.net,1,1
+C100084,2024-07-25,email,Germany,Stewartland,2005,M,rjohnson@example.net,1,1
+C100085,2024-10-02,display,Romania,South Christineshire,1982,M,denise47@example.net,1,1
+C100086,2025-12-20,paid_social,Germany,North Amandahaven,1990,F,sgoodwin@example.org,1,1
+C100087,2025-07-11,organic,Spain,Davidstad,1986,F,krose@example.org,1,1
+C100088,2024-11-20,organic,United Kingdom,East Mikeburgh,2007,F,hoganeric@example.net,0,1
+C100089,2025-08-14,paid_social,United Kingdom,Bassport,1992,M,christopher23@example.org,1,1
+C100090,2024-11-16,paid_social,Germany,Lake Lisaport,1992,M,,1,0
+C100091,2025-12-10,organic,Italy,East Josephville,1987,M,michaeljennings@example.com,1,1
+C100092,2025-06-27,paid_search,Netherlands,West Juan,1985,M,pruittmichael@example.com,1,1
+C100093,2025-05-06,paid_search,Romania,Lake Matthew,1970,F,joshua89@example.org,0,1
+C100094,2025-02-28,paid_social,Germany,Williamview,1972,F,amber83@example.org,1,1
+C100095,2025-11-13,paid_search,Italy,North Cynthiaview,1990,M,katie03@example.com,1,1
+C100096,2025-04-20,paid_search,Italy,North Matthewberg,1988,M,mwalker@example.org,0,1
+C100097,2024-09-30,organic,France,Evanmouth,1990,F,ryanlee@example.net,1,1
+C100098,2024-10-28,email,Spain,Hoffmanville,1999,M,monica04@example.com,0,1
+C100099,2026-06-05,paid_social,Italy,Lake Rebeccaside,1989,F,gward@example.com,0,1
+C100100,2026-04-30,organic,Germany,Port Mikeside,1983,M,fpena@example.org,0,1
+C100101,2025-12-11,paid_search,Germany,South David,1985,M,kimberlyleon@example.org,0,1
+C100102,2025-01-27,paid_search,Romania,Michaelton,1990,M,ithompson@example.com,1,1
+C100103,2026-06-10,paid_social,France,Jasonbury,1983,F,paul34@example.com,0,1
+C100104,2026-01-28,paid_social,Spain,West Kimberlychester,2000,F,rwilliams@example.net,1,1
+C100105,2025-12-18,paid_social,Romania,East Michelle,1987,Other,jasonray@example.com,1,1
+C100106,2025-06-30,display,United Kingdom,South Angel,1991,M,mthompson@example.net,0,1
+C100107,2025-02-03,organic,Germany,Kimberlychester,1978,M,randall36@example.org,1,1
+C100108,2024-10-08,paid_search,Netherlands,West Erik,2000,F,sandersjohn@example.net,0,1
+C100109,2026-04-26,organic,United Kingdom,South Monicafort,2005,M,paul17@example.org,1,1
+C100110,2025-07-06,paid_search,Germany,East Lisa,1971,F,jponce@example.net,1,1
+C100111,2024-12-11,paid_search,United Kingdom,Baileybury,1992,Other,youngjared@example.com,1,1
+C100112,2025-03-04,display,Spain,North Donna,1986,F,charlotte84@example.net,1,1
+C100113,2025-10-15,organic,United Kingdom,Murphyland,1991,F,fcampbell@example.net,0,1
+C100114,2024-11-28,paid_social,United Kingdom,Michaelhaven,1993,F,hamiltonyolanda@example.com,0,1
+C100115,2026-03-25,paid_search,Spain,Frazierside,1961,F,michelefrazier@example.org,1,1
+C100116,2026-01-09,paid_search,United Kingdom,Sheilaville,1997,Other,brownstephanie@example.org,1,1
+C100117,2025-12-19,display,Netherlands,Gregoryview,2001,F,xjenkins@example.com,0,1
+C100118,2025-06-16,organic,Germany,North Candacestad,2002,M,wwhite@example.org,1,1
+C100119,2025-11-11,paid_search,Spain,Samuelhaven,1976,M,michael54@example.org,1,1
+C100120,2025-10-19,paid_search,United Kingdom,South Rachelborough,1987,F,karen85@example.com,1,1
+C100121,2025-11-21,display,United Kingdom,Bradleychester,1981,M,khernandez@example.com,1,1
+C100122,2024-09-26,organic,Germany,New Saraside,1965,M,gallagherdalton@example.org,1,1
+C100123,2025-06-03,affiliate,United States,West Ryan,1980,M,alison10@example.com,1,1
+C100124,2024-08-15,affiliate,Spain,Cindyville,1974,F,vburgess@example.net,0,1
+C100125,2025-08-08,email,Germany,Williamchester,1992,M,whitepedro@example.org,1,1
+C100126,2025-03-24,paid_search,United Kingdom,Richardport,1968,M,robert01@example.com,1,1
+C100127,2024-11-12,paid_social,United Kingdom,East Robert,1976,Other,cheyenne53@example.net,0,1
+C100128,2024-10-14,organic,Germany,Byrdburgh,1981,M,stoutjennifer@example.org,1,1
+C100129,2025-10-21,email,United Kingdom,Richardtown,1997,F,joshua06@example.com,1,1
+C100130,2024-11-25,paid_social,Italy,Justinchester,2007,F,sgardner@example.com,1,1
+C100131,2026-05-11,organic,United Kingdom,Stevenmouth,1991,M,orusso@example.org,1,1
+C100132,2025-10-16,paid_search,Italy,New Thomas,1975,Other,jordanbrian@example.org,0,1
+C100133,2025-04-07,email,United Kingdom,Lake Christopher,1979,F,eric38@example.net,0,1
+C100134,2025-10-24,email,Spain,Clarencebury,1995,F,michaelnewton@example.org,1,1
+C100135,2024-07-25,paid_social,France,Jeffreyborough,1971,F,ejones@example.net,1,1
+C100136,2026-06-03,paid_social,United Kingdom,North Brandon,2001,F,mcdanielkatelyn@example.net,1,1
+C100137,2025-07-29,display,Spain,Carrland,1991,F,andrew30@example.com,0,1
+C100138,2026-02-01,email,Germany,Perryshire,1986,F,pittmanryan@example.org,1,1
+C100139,2024-09-25,display,Italy,Lake Heather,1967,F,amber33@example.net,1,1
+C100140,2025-08-02,paid_search,Spain,Rossberg,1999,M,kimberlyporter@example.org,0,1
+C100141,2025-08-05,paid_social,United States,Port Michelleville,1978,M,spencer55@example.com,1,1
+C100142,2026-05-20,email,Italy,Robinsonhaven,1989,F,jacksonsamantha@example.net,0,1
+C100143,2025-10-09,organic,Germany,Williamsbury,1986,M,kellychang@example.org,0,1
+C100144,2025-07-21,paid_search,France,South Dennismouth,1968,F,adamlogan@example.net,1,1
+C100145,2025-01-28,organic,Netherlands,Stephaniemouth,1985,M,kellydesiree@example.org,0,1
+C100146,2025-03-25,paid_search,Germany,Rivasside,1973,M,dillon76@example.net,0,1
+C100147,2025-08-31,display,Romania,Merrittfort,1980,F,wilsonlisa@example.com,1,1
+C100148,2025-06-22,organic,Germany,Greenbury,1993,M,cmartin@example.com,1,1
+C100149,2024-07-24,paid_social,Netherlands,Katiehaven,1996,F,woodsjeremy@example.net,1,1
+C100150,2026-03-04,organic,Germany,Simsview,1987,F,joshuahull@example.org,1,1
+C100151,2026-04-21,email,United Kingdom,Jonesport,1977,F,paigephillips@example.org,0,1
+C100152,2024-11-10,email,United States,West Matthew,1980,F,lorettawatts@example.org,1,1
+C100153,2025-09-26,paid_social,Italy,East Edwardfurt,1980,F,brandon27@example.com,1,1
+C100154,2024-10-19,display,Germany,Lake Jason,1962,M,ycervantes@example.org,0,1
+C100155,2025-11-30,organic,United Kingdom,Russellside,1988,F,williamcampbell@example.org,1,1
+C100156,2025-02-10,email,Spain,Perryborough,1968,M,timothylong@example.com,1,1
+C100157,2025-11-25,display,Germany,Priceshire,1988,F,caitlinvargas@example.org,1,1
+C100158,2025-12-22,organic,Romania,Port Nicoleshire,1970,F,jo03@example.org,0,1
+C100159,2026-01-18,affiliate,Spain,Woodsstad,1973,M,millsdanielle@example.org,1,1
+C100160,2024-10-18,organic,Germany,Karenchester,1996,M,angela32@example.net,1,1
+C100161,2026-05-05,paid_social,Germany,South Jeffrey,1988,M,robertsonlisa@example.com,1,1
+C100162,2024-12-25,organic,United Kingdom,Tuckerfurt,1965,M,molinajoseph@example.net,1,1
+C100163,2024-08-10,display,Germany,Elizabethfurt,1981,M,vguerrero@example.net,1,1
+C100164,2025-09-26,organic,Romania,Port Tanner,1991,Other,huffdavid@example.org,0,1
+C100165,2025-04-27,organic,United Kingdom,New Amanda,1980,F,stevenjackson@example.org,1,1
+C100166,2026-03-06,paid_search,United States,Vargastown,1983,Other,webbkeith@example.com,1,1
+C100167,2026-02-19,affiliate,Netherlands,Lake Roymouth,1990,F,ashleyholt@example.com,0,1
+C100168,2025-03-13,paid_search,United Kingdom,North Jorge,1988,F,washingtonjohn@example.net,1,1
+C100169,2026-05-30,paid_social,Romania,Jasonmouth,1976,F,johnsonjennifer@example.com,0,1
+C100170,2025-02-19,paid_social,France,Kathleenfurt,1988,M,grice@example.net,0,1
+C100171,2025-08-26,email,France,Karenchester,1984,F,rose86@example.com,0,1
+C100172,2025-01-15,paid_search,Romania,Maryfort,2007,F,ewebster@example.com,1,1
+C100173,2026-05-19,paid_social,United Kingdom,Lake Amberstad,1986,F,carol66@example.org,1,1
+C100174,2024-11-22,affiliate,United Kingdom,Lake Casey,1989,M,,1,0
+C100175,2024-08-19,paid_search,United Kingdom,Port Anthonybury,1991,M,saundersmelissa@example.com,1,1
+C100176,2025-06-19,paid_search,United Kingdom,Port Andrew,1984,M,dale08@example.org,0,1
+C100177,2026-06-25,email,Netherlands,East David,1979,M,leezachary@example.org,1,1
+C100178,2026-04-18,paid_search,United States,New Staciemouth,1993,M,michaelmathews@example.net,1,1
+C100179,2025-12-31,paid_search,Netherlands,Katieburgh,1993,M,adam39@example.org,1,1
+C100180,2026-04-17,paid_search,United States,Port Loriport,2007,M,daryl02@example.com,1,1
+C100181,2026-04-20,email,Romania,New Anthonyport,1996,M,timothy75@example.org,1,1
+C100182,2025-08-30,affiliate,Germany,Sandersborough,1997,M,sbarnes@example.net,0,1
+C100183,2025-03-12,paid_social,Italy,New Hannahbury,1996,M,robinsonjoy@example.com,1,1
+C100184,2026-01-22,paid_social,United Kingdom,Lake Kendraville,1979,F,,1,0
+C100185,2025-11-26,paid_search,United Kingdom,West Amandastad,1972,M,edward81@example.org,0,1
+C100186,2025-04-30,organic,United States,New Deborahtown,1975,M,john64@example.org,1,1
+C100187,2024-10-06,organic,Netherlands,Shortville,1996,F,katelynrobinson@example.org,0,1
+C100188,2025-12-30,organic,United States,Yumouth,2005,M,john52@example.net,0,1
+C100189,2025-01-23,organic,United Kingdom,South Gregory,1996,F,pwilliams@example.net,1,1
+C100190,2026-05-19,paid_social,Spain,Christinaside,1985,F,jacob98@example.com,1,1
+C100191,2024-12-30,organic,Germany,Marshallshire,2007,M,kellygrimes@example.org,0,1
+C100192,2024-11-01,organic,Germany,Marcusbury,1982,M,kinglisa@example.com,0,1
+C100193,2026-03-07,paid_search,Italy,West Nicolebury,1974,M,,0,0
+C100194,2024-11-16,organic,France,Hudsonfurt,1991,Other,pharris@example.com,1,1
+C100195,2024-11-29,organic,Netherlands,Anthonymouth,2003,F,wjohnson@example.net,0,1
+C100196,2025-10-30,organic,Italy,South Jason,1977,F,johnstonrobert@example.net,0,1
+C100197,2026-04-06,paid_search,Italy,Matthewview,1967,F,morrisonmichael@example.com,1,1
+C100198,2024-12-08,paid_social,United Kingdom,New Stacyland,1988,Other,bailey73@example.net,1,1
+C100199,2025-03-07,display,United Kingdom,Lake Richard,1997,F,cdavis@example.net,1,1
