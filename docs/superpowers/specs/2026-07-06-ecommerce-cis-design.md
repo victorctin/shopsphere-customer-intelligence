@@ -1,15 +1,14 @@
 # E-commerce Customer Intelligence System — Design Document
 
 **Date:** 2026-07-06
-**Status:** Approved design (user-approved blueprint, this file is the detailed spec)
-**Author:** Victor Constantin Pavel (built with Claude Code)
-**Purpose:** Portfolio project for CV — junior-to-intermediate Data Analyst, e-commerce domain
+**Author:** Victor Constantin Pavel
+**Purpose:** Portfolio Project
 
 ---
 
 ## 1. Executive Summary
 
-An end-to-end customer analytics project for a fictional mid-size online retailer, **ShopSphere**, built the way a real analytics team would build it: raw data lands in a MySQL warehouse, is cleaned and modeled in layers, analyzed in Python, and delivered through a Power BI dashboard, an Excel executive workbook, and a plain-language PDF report. The entire build is documented as a 17-post LinkedIn series (one per phase, P0–P16).
+An end-to-end customer analytics project for a fictional mid-size online retailer, **ShopSphere**, built the way a real analytics team would build it: raw data lands in a MySQL warehouse, is cleaned and modeled in layers, analyzed in Python, and delivered through a Power BI dashboard, an Excel executive workbook.
 
 **Tools:** MySQL 8 (SQL) · Python 3.11+ (pandas, matplotlib, scikit-learn, lifetimes, scipy, statsmodels) · Power BI Desktop · Microsoft Excel (one targeted deliverable).
 
@@ -27,8 +26,6 @@ An end-to-end customer analytics project for a fictional mid-size online retaile
 - Retaining a customer costs **5–25x less** than acquiring a new one (HBR range, reconfirmed by Releva 2026 analysis).
 - Typical session-to-order conversion: **~2–3%**; cart abandonment: **~70%** (Baymard Institute).
 
-These numbers are used two ways: (a) as the narrative for LinkedIn posts and the final PDF, and (b) as **calibration targets for the synthetic data** so the dataset behaves like a real store.
-
 ---
 
 ## 2. Success Criteria
@@ -39,9 +36,8 @@ The project is done when ALL of the following are true:
 2. Every requested technique is present and business-framed: cleaning, EDA, RFM, funnel, feature engineering, combined segmentation, KPI analysis, A/B testing, CLV (historical + predictive), churn model, cohort analysis.
 3. Power BI dashboard (5 pages) connects to MySQL gold marts and answers the three leadership questions.
 4. All KPIs from the brief are computed and defined in a KPI dictionary: Conversion Rate, CTR, ROAS, CAC, AOV, Revenue, Retention Rate, Repeat Purchase Rate, CSAT/NPS, plus Churn Rate, CLV, CLV:CAC, Cart Abandonment Rate, Purchase Frequency, Avg Days Between Purchases, MER, New vs Returning Revenue Share.
-5. 17 LinkedIn post drafts exist in `linkedin/` (p00–p16), one per phase, each with a suggested visual.
-6. A non-technical PDF explains the whole project in plain language (why / objective / implementation / impact / deliverables per stage).
-7. Synthetic data passes its calibration checks (Section 4.1) — the store's KPIs land within realistic benchmark ranges.
+5. A non-technical PDF explains the whole project in plain language (why / objective / implementation / impact / deliverables per stage).
+6. Synthetic data passes its calibration checks (Section 4.1) — the store's KPIs land within realistic benchmark ranges.
 
 ---
 
@@ -153,7 +149,6 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
 
 ## 6. Roadmap — 8 Milestones, 17 Phases (P0–P16)
 
-Working mode: **phase-by-phase with checkpoints.** Each phase ends with: (1) working, verified code; (2) a doc section in plain English covering *why it matters / business objective / technical implementation / business impact / deliverables*; (3) a LinkedIn post draft with suggested visual; (4) user review before the next phase starts.
 
 ### M1 — Foundation
 - **P0 Setup:** repo scaffolding, venv + `requirements.txt`, `.env` config, MySQL database `shopsphere_dw` + bronze DDL, smoke test (Python↔MySQL and Power BI↔MySQL connectivity verified early). *Deliverables:* runnable skeleton, `docs/SETUP.md`.
@@ -192,7 +187,7 @@ Working mode: **phase-by-phase with checkpoints.** Each phase ends with: (1) wor
 
 ### M8 — Communication
 - **P15 Insights & recommendations + Excel:** consolidated top-10 insights, each: finding → evidence → recommended action → estimated impact; Excel executive KPI workbook (§10). *Deliverables:* `docs/business_insights_and_recommendations.md`, `excel/shopsphere_executive_kpis.xlsx`.
-- **P16 Final packaging:** non-technical PDF (§11), portfolio README with screenshots, LinkedIn series final review, repo hygiene pass. *Deliverables:* PDF, README, 17 polished post drafts.
+- **P16 Final packaging:** non-technical PDF (§11)
 
 ---
 
@@ -243,40 +238,18 @@ E-commerce Customer Intelligence System/
 ├── reports/
 │   ├── figures/
 │   └── final/                    # PDF lives here
-└── tasks/                        # todo.md, lessons.md (per CLAUDE.md)
+└── tasks/                        # todo.md, lessons.md
 ```
-
-Repo: **new dedicated git repo** rooted here (initialized 2026-07-06, branch `main`). The old parent-level repo and its history are ignored entirely.
-
 ---
 
-## 8. LinkedIn Series Plan (17 posts, p00–p16)
-
-**Cadence:** one post per completed phase (user publishes at their own pace).
-**Template per post (stored as `linkedin/pNN_<topic>.md`):**
-
-1. Hook — the business pain in one line (with a real stat where possible)
-2. What I built this week (plain language, no jargon walls)
-3. Why it matters — the business value
-4. How — tools & techniques (SQL/Python/Power BI specifics, 2–4 bullets)
-5. What the data said — 1–3 concrete insights with numbers
-6. Suggested visual (a specific figure from `reports/figures/`)
-7. What's next + hashtags (#DataAnalytics #Ecommerce #SQL #Python #PowerBI + 2 topical)
-
-**Series arc:** P0 announces the project & the retention problem; P1–P3 "you can't analyze what you can't trust"; P4–P8 "know your customers"; P9–P11 "value & risk"; P12 "experiment like a scientist"; P13–P16 "deliver like a professional," ending with the full dashboard reveal + PDF.
-
-**Honesty rule:** every post that shows numbers states the data is synthetic but calibrated to real 2026 industry benchmarks.
-
----
-
-## 9. Power BI Model Spec
+## 8. Power BI Model Spec
 
 - **Import mode** from MySQL (via MySQL .NET connector), refreshable.
 - Star schema: fact tables `gold_sales_daily`, `gold_funnel_daily`, `gold_marketing_channel_monthly`; dimensions `dim_date`, `dim_customer` (from customer_360; includes segment/persona/churn decile/CLV band), `dim_product`, `dim_channel`.
 - DAX measure groups: Revenue & Orders, Rates (conversion/retention/repeat/abandon), Marketing (CAC/ROAS/CTR/MER), Customer Value (CLV, CLV:CAC), Satisfaction (NPS/CSAT).
 - Design: consistent theme, top-left KPI cards, one key visual per page answering one question; every page titled as a question (e.g., "Where do we lose customers?").
 
-## 10. Excel Deliverable Spec
+## 9. Excel Deliverable Spec
 
 `excel/shopsphere_executive_kpis.xlsx` — generated from gold marts via Python (openpyxl):
 
@@ -285,7 +258,7 @@ Repo: **new dedicated git repo** rooted here (initialized 2026-07-06, branch `ma
 - Sheet 3 "Segment Summary": RFM/persona sizes, revenue share, recommended action per segment.
 - Rationale: executives and finance consume Excel; this shows the analyst can meet stakeholders where they are.
 
-## 11. Final PDF Spec
+## 10. Final PDF Spec
 
 `reports/final/ShopSphere_Customer_Intelligence_Report.pdf` — written for a non-technical reader:
 
@@ -295,13 +268,13 @@ Repo: **new dedicated git repo** rooted here (initialized 2026-07-06, branch `ma
 
 ---
 
-## 12. Environment & Tooling
+## 11. Environment & Tooling
 
 - Windows 11, Python 3.11+ in project venv, MySQL 8.x local server, Power BI Desktop (installed), VS Code.
 - Python deps (pinned in requirements.txt): pandas, numpy, SQLAlchemy, PyMySQL, python-dotenv, faker, matplotlib, seaborn, scikit-learn, scipy, statsmodels, lifetimes, openpyxl, jupyter.
 - Secrets: `.env` only (DB user/password), `.env.example` committed, `.env` gitignored. DB user is a least-privilege `shopsphere_app` account, not root.
 
-## 13. Risks & Guardrails
+## 12. Risks & Guardrails
 
 | Risk | Guardrail |
 |------|-----------|
@@ -317,4 +290,4 @@ Repo: **new dedicated git repo** rooted here (initialized 2026-07-06, branch `ma
 - Real-time / streaming ingestion; cloud deployment (local-first, noted as future work)
 - Deep-learning models; recommender systems
 - Multi-touch attribution modeling (last-touch + channel-level economics only)
-- Automated LinkedIn publishing (drafts only; user publishes manually)
+  
