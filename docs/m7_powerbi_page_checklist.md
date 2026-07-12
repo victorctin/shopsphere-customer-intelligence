@@ -3,15 +3,9 @@
 The semantic model (tables, relationships, DAX measures) is built into the open
 Power BI Desktop instance by the orchestrator via the modeling tools. This doc
 is the by-hand part: which visuals to place on each page and which fields and
-measures they use. Estimated hands-on time: 45–60 minutes.
+measures they use.
 
-Source: MySQL `shopsphere_dw` gold views, import mode via ODBC
-(`MySQL ODBC 9.7 Unicode Driver` — Connector/NET is NOT detected by the
-Store-packaged Desktop). Refresh = Home → Refresh (re-runs the gold views;
-safe, they are read-only views). Credential is stored in Desktop's data
-source settings: user `shopsphere_app`.
-
-## Model contents (built for you — do not recreate)
+## Model contents
 
 - Tables (9): `gold_order_revenue` (order grain — feeds Total Revenue/AOV),
   `gold_customer_summary`, `gold_monthly_kpis`, `gold_revenue_trend`,
