@@ -2,10 +2,10 @@
 
 **The problem:** ShopSphere, a mid-size online retailer, keeps buying growth it
 cannot keep. **69.2% of its customers never place a second order** while
-acquisition costs climb — the classic e-commerce retention trap. This project
+acquisition costs climb, the classic e-commerce retention trap. This project
 builds the full analytics stack to diagnose and attack that problem: a layered
 MySQL warehouse, SQL KPI contracts, Python statistics and ML (RFM, cohorts,
-CLV, churn, A/B testing), and executive deliverables — end to end, from a
+CLV, churn, A/B testing), and executive deliverables. End to end, from a
 random seed to a boardroom PDF.
 
 `Python 3.11` · `MySQL 8` · `SQLAlchemy` · `pandas / numpy / scipy / scikit-learn` · `pytest` · `Power BI` · `Excel`
