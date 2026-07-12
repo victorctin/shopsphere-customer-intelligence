@@ -1,17 +1,8 @@
-# M7 — Delivery Plan (written 2026-07-10, before implementation)
+# M7 — Delivery Plan
 
 Goal in one line: turn the gold layer into two stakeholder artifacts — an Excel
 executive workbook built and validated programmatically, and a 5-page Power BI
 product built live into Power BI Desktop via the modeling tools.
-
-## Decisions already made (Victor, 2026-07-10)
-
-- openpyxl approved as a new pinned dependency (Excel engine).
-- Power BI route: live build via MCP into an open Power BI Desktop instance
-  (Store version 2.155.756.0 confirmed installed); Victor opens a blank file.
-  Page visuals are placed by Victor from a per-page checklist — the modeling
-  tools build the semantic model (tables, relationships, DAX measures), not
-  the report canvas.
 
 ## Deliverable 1 — Excel executive workbook
 
@@ -40,8 +31,7 @@ product built live into Power BI Desktop via the modeling tools.
 ## Deliverable 2 — Power BI 5-page product
 
 - Model built live via powerbi-modeling tools into the open Desktop instance;
-  data source = MySQL `shopsphere_dw` gold views (Victor's existing MySQL
-  connector / ODBC).
+  data source = MySQL `shopsphere_dw` gold views.
 - Import-mode tables: gold_monthly_kpis, gold_revenue_trend, gold_funnel,
   gold_channel_cac_monthly, gold_customer_summary, gold_cohort_retention,
   gold_top_products, gold_nps_monthly + a Calendar table.
@@ -49,7 +39,7 @@ product built live into Power BI Desktop via the modeling tools.
   Rate, Abandonment %, CAC (paid), NPS, MoM Revenue %, Cumulative Revenue,
   Retention % (cohort). Exact formulas mirror the gold KPI contract
   (completed orders only; revenue = qty × unit price − discount).
-- Pages (visuals placed by Victor from the checklist doc):
+- Pages:
   1. Executive Overview — KPI cards + revenue trend.
   2. Funnel & Acquisition — funnel chart, CAC by channel, spend vs revenue.
   3. Customers & Segments — RFM/pareto, one-time vs repeat.
@@ -65,7 +55,3 @@ product built live into Power BI Desktop via the modeling tools.
   = 1,664,813.13 and AOV within ±0.5% of 93.9564 (run via dax_query tools).
 - Standard gates re-run: pytest (count never drops from 55), calibration 8/8.
 
-## Out of scope for M7
-
-- Final PDF and LinkedIn wrap-up (M8).
-- Publishing to Power BI Service (local Desktop file only).
