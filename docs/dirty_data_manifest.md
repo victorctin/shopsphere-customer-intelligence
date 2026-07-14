@@ -1,4 +1,4 @@
-# Dirty Data Manifest (ground truth for Phase 2 cleaning)
+# Dirty Data Manifest (ground truth for cleaning)
 
 | Defect | Rows |
 |---|---|
