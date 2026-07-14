@@ -222,15 +222,3 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
 - Python deps (pinned in requirements.txt): pandas, numpy, SQLAlchemy, PyMySQL, python-dotenv, faker, matplotlib, seaborn, scikit-learn, scipy, statsmodels, lifetimes, openpyxl, jupyter.
 - Secrets: `.env` only (DB user/password), `.env.example` committed, `.env` gitignored. DB user is a least-privilege `shopsphere_app` account, not root.
 
-## 13. Risks & Guardrails
-
-| Risk | Guardrail |
-|------|-----------|
-| Synthetic data looks fake | Calibration checks in P1 are a hard gate, benchmarks in §1 are the targets |
-| Churn model data leakage | Snapshot-date design, features strictly pre-snapshot, documented explicitly |
-| MySQL↔Power BI connector pain | Verified in P0 smoke test, not discovered at P14 |
-| Scope creep / never finishing | Phase gates, each phase independently publishable, bonus polish only after P16 |
-| Overclaiming on LinkedIn | Posts state data is synthetic-but-calibrated, honesty is part of the brand |
-| ML complexity beyond junior-mid level | Baseline-first (logistic regression), explainable metrics, no exotic tuning |
-
-  
