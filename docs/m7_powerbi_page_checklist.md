@@ -49,7 +49,7 @@ Power BI Desktop instance by the orchestrator via the modeling tools.
       `months_since_first`, values = AVERAGE `retention_rate`.
 - [ ] Conditional formatting on values: background color scale white → blue,
       min 0, max 0.15.
-- [ ] Card: cohort_size of the largest cohort (optional).
+- [ ] Card: cohort_size of the largest cohort.
 - [ ] Slicer: cohort_month range.
 
 ## Page 5 — Experiment (free_shipping_threshold)
@@ -62,7 +62,7 @@ Power BI Desktop instance by the orchestrator via the modeling tools.
 - [ ] Text box: guardrail caveat — converted-order revenue $88.80 vs $97.36,
       Welch p = 0.071 (suggestive basket shrink, not significant); revenue per
       assignment still favors treatment ($3.17 vs $3.00).
-- [ ] Recommendation callout: ship, monitor basket size.
+
 
 ## Result Numbers
 
