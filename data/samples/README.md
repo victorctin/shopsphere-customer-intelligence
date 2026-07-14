@@ -14,12 +14,7 @@ silver/   post python/02_clean — typed, deduplicated, validated
 
 The complete tables (`data/raw/`, `data/silver/`) are gitignored — roughly
 270 MB across ~2.36M rows, all synthetic and deterministic from a fixed seed.
-Reproduce them exactly with:
 
-```bash
-python python/01_generate/run_all.py       # generates + loads data/raw
-python python/02_clean/run_clean.py --load-db  # produces data/silver
-```
 
 See [docs/01_DATA_MODEL_AND_DICTIONARY.md](../../docs/01_DATA_MODEL_AND_DICTIONARY.md)
 for the column dictionary and [docs/SETUP.md](../../docs/SETUP.md) for the full
