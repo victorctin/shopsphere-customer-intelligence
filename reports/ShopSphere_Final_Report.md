@@ -113,4 +113,3 @@ Headline KPIs in this report are queried live from the gold views at build time 
 
 ShopSphere is a synthetic retailer: all data generated, calibrated to 2026 industry benchmarks, and verified by the gates above.
 
-Report built by `python/05_delivery/build_final_report.py`.
