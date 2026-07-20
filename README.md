@@ -36,7 +36,7 @@ random seed to a boardroom PDF.
 | What are they worth? | 12-month CLV **$282,875** (BG/NBD + Gamma-Gamma, backtest pred/actual = 1.06); churn AUC **0.81** |
 | What should we ship? | Free-shipping threshold A/B: **+15.1% conversion** (p = 7.9e-04, power 91.9%, SRM clean) — ship with a basket-size guardrail |
 
-Full analysis: [`reports/shopsphere_final_report.pdf`](reports/shopsphere_final_report.pdf) ·
+Full analysis: [`reports/README`](reports/README.md) ·
 15 figures in [`reports/figures/`](reports/figures/) ·
 
 ![Monthly revenue](reports/figures/monthly_revenue.png)
@@ -76,7 +76,7 @@ because each one is audited against the gold layer at build time.
 ## Quickstart
 
 Full reproduction guide (MySQL setup, `.env`, pipeline, Power BI connectivity):
-**[docs/SETUP.md](docs/SETUP.md)**. Short version:
+. Short version:
 
 ```bash
 pip install -r requirements.txt
@@ -91,7 +91,7 @@ python python/05_delivery/build_excel_workbook.py      # Excel deliverable
 python python/05_delivery/build_final_report.py        # HTML + PDF deliverable
 ```
 
-Data model and column dictionary: [docs/01_DATA_MODEL_AND_DICTIONARY.md](docs/01_DATA_MODEL_AND_DICTIONARY.md).
+Data model and column dictionary: [docs/README.md](docs/README.md).
 
 ## Repository map
 
@@ -101,7 +101,6 @@ python/
   02_clean/      bronze -> silver cleaning + graded quality report
   03_gold/       gold view application + KPI gate
   04_model/      BG/NBD + Gamma-Gamma implementation (scipy)
-  05_delivery/   Excel workbook + PDF report builders (self-validating)
 notebooks/       4 executed analysis notebooks (EDA, RFM, CLV/churn, A/B)
 sql/             DDL: setup, bronze, silver, 12 gold views
 docs/            data model, setup, calibration + quality reports, milestone plans
