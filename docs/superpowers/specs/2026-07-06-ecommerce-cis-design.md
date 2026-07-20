@@ -78,7 +78,7 @@ The project is done when ALL of the following are true:
 
 ## Data Model & Dictionary
 
-Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules in §4.1 so all benchmark rates hold simultaneously), covering **2024-07-01 → 2026-06-30** (24 months — enough for cohort and seasonality analysis). Dates use `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`.
+Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules, so all benchmark rates hold simultaneously), covering **2024-07-01 → 2026-06-30** (24 months — enough for cohort and seasonality analysis). Dates use `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`.
 
 | # | Table | Grain | ~Rows | Key columns |
 |---|-------|-------|------:|-------------|
