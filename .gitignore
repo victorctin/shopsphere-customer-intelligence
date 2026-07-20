@@ -7,6 +7,3 @@ __pycache__/
 .ipynb_checkpoints/
 *.pbix.tmp
 
-# AI workspace
-.claude/
-.claude-flow/
