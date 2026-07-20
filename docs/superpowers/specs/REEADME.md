@@ -72,7 +72,7 @@ The project is done when ALL of the following are true:
 - Config in `python/config/settings.py` + `.env` (never hardcoded credentials: `.env.example` committed).
 - Every phase has an orchestrator script (`run_*.py`) so each phase is one command.
 - Random seed fixed (`RANDOM_SEED = 42`) — fully reproducible dataset.
-- All figures saved to `reports/figures/` at LinkedIn-friendly resolution (1200×675 or square).
+- All figures saved to `reports/figures/` at friendly resolution (1200×675 or square).
 
 ---
 
