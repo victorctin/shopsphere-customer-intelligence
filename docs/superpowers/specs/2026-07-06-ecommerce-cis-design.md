@@ -37,7 +37,7 @@ The project is done when ALL of the following are true:
 3. Power BI dashboard (5 pages) connects to MySQL gold marts and answers the three leadership questions.
 4. All KPIs from the brief are computed and defined in a KPI dictionary: Conversion Rate, CTR, ROAS, CAC, AOV, Revenue, Retention Rate, Repeat Purchase Rate, CSAT/NPS, plus Churn Rate, CLV, CLV:CAC, Cart Abandonment Rate, Purchase Frequency, Avg Days Between Purchases, MER, New vs Returning Revenue Share.
 5. A non-technical PDF explains the whole project in plain language (why / objective / implementation / impact / deliverables per stage).
-6. Synthetic data passes its calibration checks (Section 4.1) — the store's KPIs land within realistic benchmark ranges.
+6. Synthetic data passes its calibration checks, the store's KPIs land within realistic benchmark ranges.
 
 ---
 
@@ -63,7 +63,7 @@ The project is done when ALL of the following are true:
 **Division of labor (each tool does what it's best at, and each earns its CV line):**
 
 - **SQL (MySQL 8):** DDL for all layers, cleaning constraints, the KPI layer as views/stored queries using window functions (RFM scoring in SQL, cohort matrix in SQL, retention by month in SQL); gold marts for BI.
-- **Python:** data generation, cleaning orchestration, statistical analysis, ML (K-Means, churn classifier, BG/NBD + Gamma-Gamma), chart production for LinkedIn/report figures.
+- **Python:** data generation, cleaning orchestration, statistical analysis, ML (K-Means, churn classifier, BG/NBD + Gamma-Gamma).
 - **Power BI:** the interactive product for stakeholders, star-schema model over gold marts, DAX measures, 5 report pages.
 - **Excel:** one executive KPI workbook.
 
