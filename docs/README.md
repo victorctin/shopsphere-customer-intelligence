@@ -3,7 +3,7 @@
 Nine linked tables, ~2.36M rows, covering **2024-07-01 → 2026-06-30** (24 months).
 Dates are `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`. Row counts are actuals
 from the seeded run (`RANDOM_SEED = 42`) and include the injected data-quality
-defects documented in [dirty_data_manifest.md](dirty_data_manifest.md).
+defects documented in [dirty_data_manifest.md](dirty_data_manifest.md)
 
 ## Relationships
 
