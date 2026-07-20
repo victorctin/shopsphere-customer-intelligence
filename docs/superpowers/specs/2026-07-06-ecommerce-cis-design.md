@@ -209,7 +209,7 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
 
 ## Final PDF Spec
 
-`reports/final/ShopSphere_Customer_Intelligence_Report.pdf` — written for a non-technical reader:
+written for a non-technical reader:
 
 - Structure: the problem → the data → each stage as a short chapter (*why it matters / business objective / what was done technically, in plain words / business impact ) → the 10 insights → the recommendations with expected impact → appendix (KPI definitions).
 - Every chart has a one-sentence takeaway caption. No unexplained jargon, every technical term gets a parenthetical plain-language gloss on first use.
