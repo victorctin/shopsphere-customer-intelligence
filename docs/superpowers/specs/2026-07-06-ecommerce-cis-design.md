@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Executive Summary
+## Executive Summary
 
 An end-to-end customer analytics project for a fictional mid-size online retailer, **ShopSphere**, built the way a real analytics team would build it: raw data lands in a MySQL warehouse, is cleaned and modeled in layers, analyzed in Python, and delivered through a Power BI dashboard, an Excel executive workbook.
 
@@ -28,7 +28,7 @@ An end-to-end customer analytics project for a fictional mid-size online retaile
 
 ---
 
-## 2. Success Criteria
+## Success Criteria
 
 The project is done when ALL of the following are true:
 
@@ -41,7 +41,7 @@ The project is done when ALL of the following are true:
 
 ---
 
-## 3. Architecture
+## Architecture
 
 **Approach chosen:** Layered warehouse pipeline (medallion-style), approved over notebook-centric and SQL-heavy alternatives.
 
@@ -76,7 +76,7 @@ The project is done when ALL of the following are true:
 
 ---
 
-## 4. Data Model & Dictionary
+## Data Model & Dictionary
 
 Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules in §4.1 so all benchmark rates hold simultaneously), covering **2024-07-01 → 2026-06-30** (24 months — enough for cohort and seasonality analysis). Dates use `YYYY-MM-DD`, timestamps `YYYY-MM-DD HH:MM:SS`.
 
@@ -94,7 +94,7 @@ Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules 
 
 **Relationships (star-friendly):** customers 1—N orders 1—N order_items N—1 products, customers 1—N web_sessions 1—N web_events, web_events.purchase links to orders, marketing_spend joins on date+channel to sessions.traffic_source and customers.acquisition_channel, ab_test_assignments hangs off web_sessions, reviews_nps hangs off customers/orders.
 
-### 4.1 Behavioral realism rules (baked into generators, verified by calibration checks)
+### Behavioral realism rules (baked into generators, verified by calibration checks)
 
 - **Pareto concentration:** top ~20% of customers generate ~55–60% of revenue.
 - **Retention reality:** ~69% of customers are one-time buyers, repeat-purchase probability increases with each successive order (2nd→3rd easier than 1st→2nd).
@@ -105,7 +105,7 @@ Nine linked tables, ~2.4M rows total (volumes derived from the behavioral rules 
 - **Satisfaction links behavior:** low star ratings / detractor NPS raise churn probability, promoters have higher repeat rates.
 - **A/B test has a real (small) effect:** treatment (lower free-shipping threshold) lifts session conversion by a plausible ~15% relative, detectable at 30k sessions per arm but requiring a proper power-aware test — a deliberate teaching moment.
 
-### 4.2 Deliberate data-quality defects
+### Deliberate data-quality defects
 
 Injected at generation time, documented in a manifest (`docs/dirty_data_manifest.md`) so cleaning results can be verified against ground truth:
 
@@ -119,7 +119,7 @@ Injected at generation time, documented in a manifest (`docs/dirty_data_manifest
 
 ---
 
-## 5. KPI Dictionary (calculation contracts)
+## KPI Dictionary (calculation contracts)
 
 All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excludes cancelled/returned.
 
@@ -147,37 +147,37 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
 
 ---
 
-## 6. Roadmap — 8 Milestones, 17 Phases (P0–P16)
+## Roadmap
 
 
-### M1 — Foundation
-- **P0 Setup:** repo scaffolding, venv + `requirements.txt`, `.env` config, MySQL database `shopsphere_dw` + bronze DDL, smoke test (Python↔MySQL and Power BI↔MySQL connectivity verified early). 
-- **P1 Data generation:** 9 seeded generators + `run_all.py`: calibration test script asserts KPI targets (§4.1) within tolerance: dirty-data injection (§4.2): load to bronze. ~2.4M rows in MySQL, `docs/01_DATA_MODEL_AND_DICTIONARY.md`, calibration report.
+### Foundation
+- **Setup:** repo scaffolding, venv + `requirements.txt`, `.env` config, MySQL database `shopsphere_dw` + bronze DDL, smoke test (Python↔MySQL and Power BI↔MySQL connectivity verified early). 
+- **Data generation:** 9 seeded generators + `run_all.py`: calibration test script asserts KPI targets (§4.1) within tolerance: dirty-data injection (§4.2): load to bronze. ~2.4M rows in MySQL, `docs/01_DATA_MODEL_AND_DICTIONARY.md`, calibration report.
 
-### M2 — Trust the Data
-- **P2 Cleaning:** bronze→silver with explicit rule-by-rule audit (rows in/out per rule), typed silver DDL with constraints, data-quality report comparing found defects vs the manifest. silver layer, `docs/data_quality_report.md`.
-- **P3 EDA:** revenue over time, AOV distribution, top products/categories, geography, customer concentration (Pareto chart), new vs returning, basket size, weekday patterns. Each chart annotated with an insight sentence. 
+### Trust the Data
+- **Cleaning:** bronze→silver with explicit rule-by-rule audit (rows in/out per rule), typed silver DDL with constraints, data-quality report comparing found defects vs the manifest. silver layer, `docs/data_quality_report.md`.
+- **EDA:** revenue over time, AOV distribution, top products/categories, geography, customer concentration (Pareto chart), new vs returning, basket size, weekday patterns. Each chart annotated with an insight sentence. 
 
-### M3 — SQL Analytics Core
-- **P4 KPI layer in SQL:** every KPI in §5 as a documented SQL view/query in `sql/30_kpi/`, window functions showcased (running revenue, MoM growth, rank-by-category). Python validation notebook cross-checks 3 KPIs against pandas. *
+### SQL Analytics Core
+- **KPI layer in SQL:** every KPI in §5 as a documented SQL view/query in `sql/30_kpi/`, window functions showcased (running revenue, MoM growth, rank-by-category). Python validation notebook cross-checks 3 KPIs against pandas. *
 
-### M4 — Who Are Our Customers
-- **P5 RFM segmentation:** R/F/M quintile scoring **in SQL** (NTILE window functions), 10 named business segments (Champions, Loyal, At Risk, Hibernating…), segment sizing + revenue share. 
-- **P6 Funnel analysis:** step conversion overall and by device/channel/new-vs-returning, identify the biggest leak, quantify the revenue upside of fixing it ("+1pp checkout completion = $X/yr"). 
-- **P7 Behavioral feature engineering:** Customer-360 table — ~25 features (recency, tenure, order stats, session intensity, cart-abandon count, category diversity, discount affinity, review sentiment proxy, channel preference…). 
-- **P8 Combined segmentation:** K-Means on scaled Customer-360 features (k chosen by elbow + silhouette, interpretability prioritized), cross-tab vs RFM segments, personas with names and marketing actions. 
+### Who Are Our Customers
+- **RFM segmentation:** R/F/M quintile scoring **in SQL** (NTILE window functions), 10 named business segments (Champions, Loyal, At Risk, Hibernating…), segment sizing + revenue share. 
+- **Funnel analysis:** step conversion overall and by device/channel/new-vs-returning, identify the biggest leak, quantify the revenue upside of fixing it ("+1pp checkout completion = $X/yr"). 
+- **Behavioral feature engineering:** Customer-360 table — ~25 features (recency, tenure, order stats, session intensity, cart-abandon count, category diversity, discount affinity, review sentiment proxy, channel preference…). 
+- **Combined segmentation:** K-Means on scaled Customer-360 features (k chosen by elbow + silhouette, interpretability prioritized), cross-tab vs RFM segments, personas with names and marketing actions. 
 
-### M5 — Value & Risk
-- **P9 Cohort analysis:** monthly acquisition cohorts × retention heatmap (SQL cohort matrix + Python viz), revenue cohorts (LTV curves by cohort), cohort quality by acquisition channel. 
-- **P10 CLV:** historical CLV distribution, predictive CLV with BG/NBD + Gamma-Gamma (`lifetimes`), validated on a holdout period, CLV by segment/channel, CLV:CAC economics per channel. 
-- **P11 Churn prediction:** label = churn definition  computed at a snapshot date with features strictly from before it (leakage-safe design explained explicitly), logistic regression baseline → random forest / gradient boosting comparison, evaluation with ROC-AUC + precision-recall + calibration, feature importance → actionable "who to save" list sized by expected value. 
+### Value & Risk
+- **Cohort analysis:** monthly acquisition cohorts × retention heatmap (SQL cohort matrix + Python viz), revenue cohorts (LTV curves by cohort), cohort quality by acquisition channel. 
+- **CLV:** historical CLV distribution, predictive CLV with BG/NBD + Gamma-Gamma (`lifetimes`), validated on a holdout period, CLV by segment/channel, CLV:CAC economics per channel. 
+- **Churn prediction:** label = churn definition  computed at a snapshot date with features strictly from before it (leakage-safe design explained explicitly), logistic regression baseline → random forest / gradient boosting comparison, evaluation with ROC-AUC + precision-recall + calibration, feature importance → actionable "who to save" list sized by expected value. 
 
-### M6 — Experimentation
-- **P12 A/B test analysis:** free-shipping-threshold test, hypothesis → power analysis (was n sufficient?) → two-proportion z-test + confidence intervals → guardrail metrics (AOV, margin — did lower threshold hurt profitability?) → ship/no-ship recommendation with revenue projection. 
+### Experimentation
+- **A/B test analysis:** free-shipping-threshold test, hypothesis → power analysis (was n sufficient?) → two-proportion z-test + confidence intervals → guardrail metrics (AOV, margin, did lower threshold hurt profitability?) → ship/no-ship recommendation with revenue projection. 
 
-### M7 — Delivery
-- **P13 Gold marts:** star-schema mart set for BI (`gold_sales_daily`, `gold_customer_360`, `gold_funnel_daily`, `gold_cohort_retention`, `gold_marketing_channel_monthly`, `gold_ab_test_results`, dim tables), refresh script. 
-- **P14 Power BI dashboard (5 pages):**
+### Delivery
+- **Gold marts:** star-schema mart set for BI (`gold_sales_daily`, `gold_customer_360`, `gold_funnel_daily`, `gold_cohort_retention`, `gold_marketing_channel_monthly`, `gold_ab_test_results`, dim tables), refresh script. 
+- **Power BI dashboard (5 pages):**
   1. **Executive Overview** — revenue, AOV, orders, conversion, MER, NPS trend, YoY.
   2. **Customer Segments** — RFM + persona breakdown, segment revenue share, migration.
   3. **Funnel & Acquisition** — funnel viz, CAC/ROAS/CTR by channel, spend vs revenue.
@@ -185,29 +185,29 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
   5. **CLV & Churn Risk** — CLV distribution, CLV:CAC by channel, churn-risk deciles, "revenue at risk."
   Star schema + documented DAX measures, slicers for date/channel/segment/category. 
 
-### M8 — Communication
-- **P15 Insights & recommendations + Excel:** consolidated top-10 insights, each: finding → evidence → recommended action → estimated impact, Excel executive KPI workbook .   `excel/shopsphere_executive_kpis.xlsx`.
-- **P16 Final packaging:** non-technical PDF
+### Communication
+- **Insights & recommendations + Excel:** consolidated top-10 insights, each: finding → evidence → recommended action → estimated impact, Excel executive KPI workbook .   `excel/shopsphere_executive_kpis.xlsx`.
+- **Final packaging:** non-technical report
 
 ---
 
-## 9. Power BI Model Spec
+## Power BI Model Spec
 
-- **Import mode** from MySQL (via MySQL .NET connector), refreshable.
+- **Import mode** from MySQL, refreshable.
 - Star schema: fact tables `gold_sales_daily`, `gold_funnel_daily`, `gold_marketing_channel_monthly`, dimensions `dim_date`, `dim_customer` (from customer_360: includes segment/persona/churn decile/CLV band), `dim_product`, `dim_channel`.
 - DAX measure groups: Revenue & Orders, Rates (conversion/retention/repeat/abandon), Marketing (CAC/ROAS/CTR/MER), Customer Value (CLV, CLV:CAC), Satisfaction (NPS/CSAT).
 - Design: consistent theme, top-left KPI cards, one key visual per page answering one question, every page titled as a question (e.g., "Where do we lose customers?").
 
-## 10. Excel Deliverable Spec
+## Excel Deliverable Spec
 
-`excel/shopsphere_executive_kpis.xlsx` — generated from gold marts via Python (openpyxl):
+`excel/shopsphere_executive_kpis.xlsx` 
 
 - Sheet 1 "Monthly KPIs": 24 months × core KPI table with conditional formatting and sparklines.
 - Sheet 2 "Channel Economics": CAC, ROAS, CLV:CAC by channel, flagged winners/losers.
 - Sheet 3 "Segment Summary": RFM/persona sizes, revenue share, recommended action per segment.
 - Rationale: executives and finance consume Excel, this shows the analyst can meet stakeholders where they are.
 
-## 11. Final PDF Spec
+## Final PDF Spec
 
 `reports/final/ShopSphere_Customer_Intelligence_Report.pdf` — written for a non-technical reader:
 
