@@ -101,15 +101,5 @@ Guardrail: converted-order revenue was $88.80 (treatment) vs. $97.36 (control), 
 4. **Target acquisition by CLV, not volume.** Mean 12-month CLV ($25.09) is far below blended paid CAC ($73.89); the top CLV decile holds 38.2% of future value — shift budget toward email/lookalikes of high-CLV profiles and away from the most expensive paid channels.
 5. **Attack cart abandonment (70.6%).** The funnel's largest leak; recovery emails and checkout friction reduction are the standard levers, now measurable month-over-month in the gold layer.
 
-## Appendix — Method & Reproducibility
-
-**Stack:** Python (seeded generators, cleaning, scipy/sklearn models) → MySQL 8 medallion warehouse (bronze/silver/gold) → SQL window functions → Excel workbook, Power BI dashboard, this report.
-
-**Determinism:** one seed in `settings.py`; same seed ⇒ byte-identical CSVs.
-
-**Gates (all green at build time):** calibration 8/8, cleaning quality 9/9, gold KPI gate 5/5, Excel workbook gate 5/5, Power BI DAX acceptance 8/8, pytest suite, and this report's own self-validation gate (KPIs re-checked against live SQL after render).
-
-Headline KPIs in this report are queried live from the gold views at build time with the same SQL as the M3 gate; model metrics quote the executed, validated notebooks.
-
-ShopSphere is a synthetic retailer: all data generated, calibrated to 2026 industry benchmarks, and verified by the gates above.
+ShopSphere is a synthetic retailer: all data generated, calibrated to 2026 industry benchmarks, and verified by the gates.
 
