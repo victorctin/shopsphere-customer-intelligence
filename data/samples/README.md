@@ -12,5 +12,5 @@ The complete tables (`data/raw/`, `data/silver/`) are gitignored — roughly
 270 MB across ~2.36M rows, all synthetic and deterministic from a fixed seed.
 
 
-See [docs/01_DATA_MODEL_AND_DICTIONARY.md](../../docs/01_DATA_MODEL_AND_DICTIONARY.md)
+See [docs/README.md](../../docs/README.md)
 for the column dictionary.
