@@ -1,5 +1,3 @@
--- Run this ONCE as MySQL root:  mysql -u root -p < sql/00_setup/00_create_database.sql
--- Replace CHANGE_ME with the same password you put in .env
 CREATE DATABASE IF NOT EXISTS shopsphere_dw
   CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
