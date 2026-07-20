@@ -1,4 +1,4 @@
-# M7 — Power BI 5-page
+# Power BI 5-page
 
 The semantic model (tables, relationships, DAX measures) is built into the open
 Power BI Desktop instance by the orchestrator via the modeling tools.
