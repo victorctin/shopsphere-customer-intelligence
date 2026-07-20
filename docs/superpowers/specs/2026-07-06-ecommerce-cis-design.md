@@ -32,7 +32,7 @@ An end-to-end customer analytics project for a fictional mid-size online retaile
 
 The project is done when ALL of the following are true:
 
-1. A stranger can clone the repo, follow `docs/SETUP.md`, and reproduce the entire pipeline (generate → load → clean → analyze → export marts) with one orchestrator command per phase.
+1. A stranger can clone the repo, and reproduce the entire pipeline (generate → load → clean → analyze → export marts) with one orchestrator command per phase.
 2. Every requested technique is present and business-framed: cleaning, EDA, RFM, funnel, feature engineering, combined segmentation, KPI analysis, A/B testing, CLV (historical + predictive), churn model, cohort analysis.
 3. Power BI dashboard (5 pages) connects to MySQL gold marts and answers the three leadership questions.
 4. All KPIs from the brief are computed and defined in a KPI dictionary: Conversion Rate, CTR, ROAS, CAC, AOV, Revenue, Retention Rate, Repeat Purchase Rate, CSAT/NPS, plus Churn Rate, CLV, CLV:CAC, Cart Abandonment Rate, Purchase Frequency, Avg Days Between Purchases, MER, New vs Returning Revenue Share.
