@@ -152,7 +152,7 @@ All KPIs computed in SQL (gold layer) unless noted. "Completed orders only" excl
 
 ### Foundation
 - **Setup:** repo scaffolding, venv + `requirements.txt`, `.env` config, MySQL database `shopsphere_dw` + bronze DDL, smoke test (Python↔MySQL and Power BI↔MySQL connectivity verified early). 
-- **Data generation:** 9 seeded generators + `run_all.py`: calibration test script asserts KPI targets within tolerance: dirty-data injection: load to bronze. ~2.4M rows in MySQL, `docs/01_DATA_MODEL_AND_DICTIONARY.md`, calibration report.
+- **Data generation:** 9 seeded generators + `run_all.py`: calibration test script asserts KPI targets within tolerance: dirty-data injection: load to bronze. ~2.4M rows in MySQL, calibration report.
 
 ### Trust the Data
 - **Cleaning:** bronze→silver with explicit rule-by-rule audit (rows in/out per rule), typed silver DDL with constraints, data-quality report comparing found defects vs the manifest. silver layer, `docs/data_quality_report.md`.
