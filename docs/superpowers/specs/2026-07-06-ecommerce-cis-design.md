@@ -64,8 +64,8 @@ The project is done when ALL of the following are true:
 
 - **SQL (MySQL 8):** DDL for all layers, cleaning constraints, the KPI layer as views/stored queries using window functions (RFM scoring in SQL, cohort matrix in SQL, retention by month in SQL); gold marts for BI.
 - **Python:** data generation, cleaning orchestration, statistical analysis, ML (K-Means, churn classifier, BG/NBD + Gamma-Gamma), chart production for LinkedIn/report figures.
-- **Power BI:** the interactive product for stakeholders — star-schema model over gold marts, DAX measures, 5 report pages.
-- **Excel:** one executive KPI workbook (Section 10).
+- **Power BI:** the interactive product for stakeholders, star-schema model over gold marts, DAX measures, 5 report pages.
+- **Excel:** one executive KPI workbook.
 
 **Conventions:**
 
