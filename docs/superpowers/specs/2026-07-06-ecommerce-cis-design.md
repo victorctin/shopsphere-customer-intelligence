@@ -218,7 +218,7 @@ written for a non-technical reader:
 
 ## 12. Environment & Tooling
 
-- Windows 11, Python 3.11+ in project venv, MySQL 8.x local server, Power BI Desktop (installed), VS Code.
+- Windows 11, Python 3.11+ in project venv, MySQL 8.x local server, Power BI Desktop, VS Code.
 - Python deps (pinned in requirements.txt): pandas, numpy, SQLAlchemy, PyMySQL, python-dotenv, faker, matplotlib, seaborn, scikit-learn, scipy, statsmodels, lifetimes, openpyxl, jupyter.
 - Secrets: `.env` only (DB user/password), `.env.example` committed, `.env` gitignored. DB user is a least-privilege `shopsphere_app` account, not root.
 
