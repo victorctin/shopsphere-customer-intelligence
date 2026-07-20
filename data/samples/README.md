@@ -8,8 +8,8 @@ pulling the full dataset.
 
 ## Full dataset
 
-The complete tables (`data/raw/`, `data/silver/`) are gitignored — roughly
-270 MB across ~2.36M rows, all synthetic and deterministic from a fixed seed.
+The complete tables (`data/raw/`, `data/silver/`) are gitignored, roughly
+**270 MB** across ~2.36M rows, all synthetic and deterministic from a fixed seed.
 
 
 See [docs/README.md](../../docs/README.md)
