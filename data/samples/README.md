@@ -1,6 +1,6 @@
 # Data samples
 
-Truncated previews of the 8 core tables — first 200 rows of each, in both the
+Truncated previews of the 8 core tables, first 200 rows of each, in both the
 raw (`bronze`-equivalent, as-generated) and `silver` (cleaned) form. These let
 you inspect schema, column types, and the effect of the cleaning step without
 pulling the full dataset.
