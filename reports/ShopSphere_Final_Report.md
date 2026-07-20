@@ -7,8 +7,6 @@ Generated: 2026-07-11
 Headline KPIs queried live from the MySQL gold layer. Model metrics quote the validated notebooks.
 All data is synthetic, calibrated to 2026 industry benchmarks.
 
-Full PDF: [`reports/shopsphere_final_report.pdf`](./reports/shopsphere_final_report.pdf)
-
 ---
 
 ## Executive Summary
