@@ -13,5 +13,4 @@ The complete tables (`data/raw/`, `data/silver/`) are gitignored — roughly
 
 
 See [docs/01_DATA_MODEL_AND_DICTIONARY.md](../../docs/01_DATA_MODEL_AND_DICTIONARY.md)
-for the column dictionary and [docs/SETUP.md](../../docs/SETUP.md) for the full
-reproduction guide.
+for the column dictionary.
